@@ -1,0 +1,18 @@
+{% extends 'base.html' %} {% load bootstrap_tags %} {% block page_title %}Login Page{% endblock %} {% block page_heading %}User Login{% endblock %} {% block content %}
+
+<!-- div for background image to attached to -->
+
+<div class='index_bg_img'>
+
+ <!-- user login form from accounts-->
+
+ <div class="form-group col-md-6 offset-md-3 log_form">
+  <form method='POST'>
+   {% csrf_token %} {{ login_form |as_bootstrap }}
+   <button type="submit" class="btn btn-success">Login</button>
+
+  </form>
+  <p> <a href="{% url 'password_reset' %}">Forgot password</a> or sign up <a href="{% url 'registration' %}"><b>here</b></a></p>
+ </div>
+</div>
+{% endblock %}

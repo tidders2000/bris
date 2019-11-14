@@ -1,0 +1,65 @@
+@import url('https://fonts.googleapis.com/css?family=Bitter|Teko&display=swap');
+
+body{
+    font-family: 'Bitter', serif;
+}
+
+h1, h2, h3,h4, h5{
+    font-family: 'Teko', sans-serif;
+}
+
+/*............................General..............................*/
+table{
+    text-align: center;
+    margin-top: 100px;
+}
+
+/*............................Base..............................*/
+
+/*...nav...*/
+nav{
+    background-color: rgb(103,170,66)
+}
+
+.title{
+    color:#2C6CB5;
+    font-weight: 800;
+    font-family: 'Teko', sans-serif;
+    font-size: 30px;
+}
+
+.custom-toggler.navbar-toggler-icon { 
+    border-color: #2C6CB5; 
+} 
+
+.container-fluid{
+    margin-top:130px;
+}
+
+/*............................login..............................*/
+
+.index_bg_img{
+    height: 700px;
+    background-image: url('../images/Picture1.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    
+}
+
+.log_form{
+    margin-top: 10%;
+}
+
+/*............................index..............................*/
+.data-circle{
+      height: 200px;
+  width: 200px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: block;
+  margin: auto;
+  text-align: center;
+  padding-top: 70px;
+  
+}
