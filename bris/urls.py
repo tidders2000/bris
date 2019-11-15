@@ -16,6 +16,7 @@ Including another URLconf
 from django.conf.urls import url, include
 from django.contrib import admin
 from accounts.views import index
+from rota import urls as urls_rota
 
 
 from accounts import urls as urls_accounts
@@ -25,6 +26,6 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', index, name="index"),
     url(r'^accounts/', include(urls_accounts)),
-     
+    url(r'^rota/', include(urls_rota)),
    
 ]

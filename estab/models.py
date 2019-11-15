@@ -7,14 +7,16 @@ location=[('bingham','bingham'),('cropwell','cropwell'),('cotgrave','cotgrave')]
 class Establishment (models.Model):
     
 
+    shiftname=models.CharField(max_length=254, default='shift')
     team=models.CharField(max_length=254, choices=teams)
     location=models.CharField(max_length=254, choices=location, default="bingham")
     shift_start = models.TimeField(auto_now=False)
     shift_end = models.TimeField(auto_now=False)
     day = models.CharField(max_length=254, choices=days)
-    hours = models.DecimalField(max_digits=2, decimal_places=0,)
-    info = models.TextField()
+    hours = models.DecimalField(max_digits=2, decimal_places=1,)
+    info = models.TextField(default='')
+    username=models.CharField(max_length=254, default='unallocated')
     
     
     def __str__(self):
-        return self.team 
+        return self.shiftname

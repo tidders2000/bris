@@ -1,0 +1,56 @@
+{% extends 'base.html' %} {% block page_title %}Rotas{% endblock %} {% block page_heading %}Home{% endblock %}
+  {% block content %}
+  
+  <h1>Rotas</h1>
+  
+<div class="row">
+  
+  <form  method="GET" id="filter" action="" enctype="multipart/form-data">
+         <input type="text" class="form-control"list="list" name="day"/>
+          <datalist id="list">
+         {% for day in days %}
+         <option  value="{{ day.day }}">
+           
+         {% endfor %}
+      </datalist><br> 
+      
+         <input type="text" class="form-control"list="list2" name="team"/>
+          <datalist id="list2">
+         {% for team in teams %}
+         <option  value="{{ team.team }}">
+           
+         {% endfor %}
+      </datalist><br>
+      <button type='submit'>go</button>
+  </form>
+  
+ </div>
+ 
+ <div class="row">
+     <form  method="POST" id="rota_add" action="" enctype="multipart/form-data">
+          <input type="text" class="form-control"list="list3" name="username"/>
+          <datalist id="list3">
+         {% for staff in staffs %}
+         <option  value="{{ staff.username}}">
+           
+         {% endfor %}
+      </datalist><br>
+     
+      <input type="text" class="form-control"list="list4" name="shift" />
+          <datalist id="list4">
+          
+         {% for select in selection %}
+         <option  value="{{select.shiftname}}"/></option>
+          <input type="hidden" name="shiftid" value="{{select.id}}">
+         {% endfor %}
+      </datalist><br>
+         {% csrf_token %} 
+      <button type='submit'>Add to Rota</button>
+         </form>
+     
+ </div>
+ 
+ 
+ 
+
+  {% endblock %}
