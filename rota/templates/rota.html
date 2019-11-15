@@ -1,34 +1,40 @@
 {% extends 'base.html' %} {% block page_title %}Rotas{% endblock %} {% block page_heading %}Home{% endblock %}
   {% block content %}
   
-  <h1>Rotas</h1>
+  <h1>Add a Rota Shift</h1>
   
 <div class="row">
-  
+    <div class="col-sm-12 col-md-4 offset-md-4">
+  <h2>Filter</h2>
+ 
   <form  method="GET" id="filter" action="" enctype="multipart/form-data">
-         <input type="text" class="form-control"list="list" name="day"/>
+         <input type="text" class="form-control"list="list" name="day" class='input_filter'  placeholder="DAY"/>
           <datalist id="list">
          {% for day in days %}
          <option  value="{{ day.day }}">
            
          {% endfor %}
       </datalist><br> 
-      
-         <input type="text" class="form-control"list="list2" name="team"/>
+     
+         <input type="text" class="form-control"list="list2" name="team" class='input_filter' placeholder="TEAM"/>
           <datalist id="list2">
          {% for team in teams %}
          <option  value="{{ team.team }}">
            
          {% endfor %}
       </datalist><br>
-      <button type='submit'>go</button>
+      <button type='submit' class="btn btn-success">go</button>
   </form>
   
+   </div>
  </div>
- 
+ <br>
+ <br>
  <div class="row">
-     <form  method="POST" id="rota_add" action="" enctype="multipart/form-data">
-          <input type="text" class="form-control"list="list3" name="username"/>
+      <div class="col-sm-12 col-md-4 offset-md-4">
+          <h2>Allocate Shift</h2>
+     <form  method="POST" id="rota_add" action="" enctype="multipart/form-data" >
+          <input type="text" class="form-control" list="list3" name="username" placeholder="SELECT EMP"/>
           <datalist id="list3">
          {% for staff in staffs %}
          <option  value="{{ staff.username}}">
@@ -36,7 +42,7 @@
          {% endfor %}
       </datalist><br>
      
-      <input type="text" class="form-control"list="list4" name="shift" />
+      <input type="text" class="form-control"list="list4" name="shift" placeholder="SELECT SHIFT" />
           <datalist id="list4">
           
          {% for select in selection %}
@@ -45,12 +51,12 @@
          {% endfor %}
       </datalist><br>
          {% csrf_token %} 
-      <button type='submit'>Add to Rota</button>
+      <button type='submit' class="btn btn-success">Add to Rota</button>
          </form>
-     
+     </div>
  </div>
  
  
- 
+
 
   {% endblock %}
