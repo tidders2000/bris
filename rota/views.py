@@ -23,11 +23,12 @@ def rota(request):
         shift=request.POST.get('shiftid')
         UserID=User.objects.get(username=username).pk
         
-        p = Rota(user=User(UserID), estab=Establishment(shift))
-        p.save()
+      
+       
         """ updates field in establishment to show shift is allocated"""
         t = Establishment.objects.get(id=shift)
-        t.username = username
+        t.username = 'allocated'
+        t.user=User(UserID)
         t.save()
         return render(request,'rota.html',{'days':days,'teams':teams, 'selection':selection})
     else:
