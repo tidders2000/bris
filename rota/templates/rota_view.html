@@ -1,0 +1,29 @@
+{% extends 'base.html' %} {% block page_title %}Rota view{% endblock %} {% block page_heading %}Home{% endblock %}
+  {% block content %}
+  <div class="row">
+    <div class="col-sm-12 col-md-4 offset-md-4">
+  <form  method="GET" id="filter" action="" enctype="multipart/form-data">
+         <input type="text" class="form-control"list="list" name="day" class='input_filter'  placeholder="DAY"/>
+          <datalist id="list">
+         {% for day in days %}
+         <option  value="{{ day.day }}">
+           
+         {% endfor %}
+      </datalist><br> 
+     
+         <input type="text" class="form-control"list="list2" name="team" class='input_filter' placeholder="TEAM"/>
+          <datalist id="list2">
+         {% for team in teams %}
+         <option  value="{{ team.team }}">
+           
+         {% endfor %}
+      </datalist><br>
+      <button type='submit' class="btn btn-success">go</button>
+  </form>
+  
+{% for val in value %}
+<p>{{val}}</p>
+{% endfor%}
+  
+  
+  {% endblock%}

@@ -32,3 +32,18 @@ def rota(request):
         return render(request,'rota.html',{'days':days,'teams':teams, 'selection':selection})
     else:
      return render(request,'rota.html',{'days':days,'teams':teams, 'selection':selection})
+
+def rota_view(request):
+    """ gets days and teams for page and sets two empty var """
+    days=Establishment.objects.values('day').distinct()
+    teams=Establishment.objects.values('team').distinct()
+    value=[]
+    if request.method=="GET":
+        day=request.GET.get('day')
+        team=request.GET.get('team')
+        rotas = Rota.objects.all()
+        for rota in rotas:
+            value.append(rota.estab.day)
+        return render(request,'rota_view.html',{'rotas':rotas,'day':day,'team':team,'value':value})
+    else:
+        return render(request,'rota_view.html',{'rotas':rotas,'days':days,'teams':teams,'value':value})
