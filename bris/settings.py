@@ -42,6 +42,8 @@ INSTALLED_APPS = [
     'home',
     'estab',
     'rota',
+    'leave',
+    'overtime',
 ]
 
 MIDDLEWARE = [
@@ -113,6 +115,7 @@ AUTHENTICATION_BACKENDS = [
 # https://docs.djangoproject.com/en/1.11/topics/i18n/
 
 LANGUAGE_CODE = 'en-us'
+DATETIME_FORMAT = '%d-%m-%Y' 
 
 TIME_ZONE = 'UTC'
 

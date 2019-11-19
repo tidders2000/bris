@@ -1,0 +1,20 @@
+{% extends 'base.html' %}{% load bootstrap_tags %} {% block page_title %}Rotas{% endblock %} {% block page_heading %}Home{% endblock %}
+  {% block content %}
+  <h1>hello</h1>
+    <form  method="POST" id="ot" action="" enctype="multipart/form-data">
+         <input type="text" class="form-control"list="list" name="UserID" class='input_filter'  placeholder="employee"/>
+          <datalist id="list">
+         {% for staff in staffs %}
+         <option  value="{{ staff.username}}">
+       <input type="hidden" name="empID" value="{{staff.pk}}">
+           
+         {% endfor %}
+      </datalist><br>
+      
+          {{ form | as_bootstrap }}
+          {% csrf_token %}  
+          <button type='submit'>Submit</button>
+      </form>
+     {{datas}}
+  {% endblock %}
+  

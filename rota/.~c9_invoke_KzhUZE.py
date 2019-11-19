@@ -4,7 +4,7 @@ import calendar
 
 from estab.models import Establishment
 from django.contrib.auth.models import User
-from overtime.models import Overtime
+from 
 
 def rota(request):
     """ gets days and teams for page and sets two empty var """
@@ -36,29 +36,21 @@ def rota(request):
     else:
      return render(request,'rota.html',{'days':days,'teams':teams, 'selection':selection})
 
-
-
 def rota_view(request):
     """ gets days and teams for page and sets two empty var """
     days=Establishment.objects.values('day').distinct()
     teams=Establishment.objects.values('team').distinct()
     value=[]
     def findDay(date): 
-        born = datetime.datetime.strptime(date,'%Y-%m-%d').weekday() 
-        return (calendar.day_name[born])
-    
-    
-    if request.method=="POST":
-        
-        value=request.POST.get('date')
-        dd=value
-        day=findDay(dd)
-        team=request.POST.get('team')
-       
-       
+        born = datetime.datetime.strptime(date, '%d/%m/%Y').weekday() 
+        return (calendar.day_name[born]) 
+
+    if request.method=="GET":
+        day=request.GET.get('day')
+        team=request.GET.get('team')
         selection=Establishment.objects.filter(day=day).filter(team=team)
-        
-        overtime=Overtime.objects.filter(Date=value).filter(team=team)
-        return render(request,'rota_view.html',{'team':team,'value':value, 'selection':selection,'day':day, 'overtime':overtime})
+        date='17/11/2019'
+        d=findDay(date)
+        return render(request,'rota_view.html',{'day':day,'team':team,'value':value, 'selection':selection, 'd':d})
     else:
-        return render(request,'rota_view.html',{'teams':teams})
+        return render(request,'rota_view.html',{'days':days,'teams':teams,'value':value, 'd':d})

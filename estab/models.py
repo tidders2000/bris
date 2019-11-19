@@ -2,7 +2,7 @@
 
 from django.db import models
 from django.contrib.auth.models import User
-days =[('monday','monday'),('tuesday','tuesday'),('wednesday','wednesday'),('thursday','thursday'),('friday','friday')] 
+days =[('Monday','Monday'),('Tuesday','Tuesday'),('Wednesday','Wednesday'),('Thursday','Thursday'),('Friday','Friday')] 
 teams=[('nurseing','nursing'),('hca','hca'),('admin','admin')]
 location=[('bingham','bingham'),('cropwell','cropwell'),('cotgrave','cotgrave')]
 class Establishment (models.Model):
