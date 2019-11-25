@@ -3,10 +3,15 @@ from django.contrib import auth, messages
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from accounts.forms import UserLoginForm, UserRegistrationForm
+from overtime.models import Overtime
+from leave.models import Leave
 
+@login_required
 def index(request):
-    """Return the index.html file"""
-    return render(request,  'index.html')
+    current_user = request.user.pk
+    otapprove=Overtime.objects.filter(appmanager=current_user,approved=False)
+    alapprove=Leave.objects.filter(appmanager=current_user,approved=False)
+    return render(request,  'index.html', {'otapprove':otapprove, 'alapprove':alapprove})
 
 @login_required
 def logout(request):

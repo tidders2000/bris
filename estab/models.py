@@ -14,10 +14,11 @@ class Establishment (models.Model):
     shift_start = models.TimeField(auto_now=False)
     shift_end = models.TimeField(auto_now=False)
     day = models.CharField(max_length=254, choices=days)
-    hours = models.DecimalField(max_digits=2, decimal_places=1,)
+    hours = models.DecimalField(max_digits=3, decimal_places=1,)
     info = models.TextField(default='')
     username=models.CharField(max_length=254, default='unallocated')
     user = models.ForeignKey(User, null=True,on_delete=models.CASCADE)
+    width = models.CharField(max_length=254, default='20')
     
     def __str__(self):
         return self.shiftname

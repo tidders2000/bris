@@ -24,8 +24,12 @@
             </div>
  
  </div>
+ <div class="row">
+   <h1>My Hours</h1>
+ </div>
  
  <div class="row">
+ 
      <div class="col-sm-12 col-md-6 offset-md-3">
          <table class="table table-striped">
             <thead>
@@ -43,7 +47,58 @@
              </tr>
              </tbody>
          </table>
+         
      </div>
+    
+    
  </div>
+ 
+         <div class="row">
+          <h1>My Approvals</h1>
+            <div class="col-sm-12">
+                <table class="table rota_tab">
+                    <thead class="thead-dark">
+                        <tr>
+
+                            <th scope="col">Name</th>
+                            <th scope="col">Start</th>
+                            <th scope="col">Finish</th>
+                            <th scope="col">Location</th>
+                            <th scope="col">Approve</th>
+                          
+                        </tr>
+                    </thead>
+                    <tbody>
+                      
+                        {% for ot in otapprove %}
+                        <tr>
+                            <td> {{ot.user.first_name}} {{over.user.last_name}}</td>
+                            <td>{{ot.shift_start}}</td>
+                            <td>{{ot.shift_end}}</td>
+                            <td>{{ot.location}}</td>
+                            <td><form> <div class="form-group form-check">
+    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+    <label class="form-check-label" for="exampleCheck1">Approve</label>
+  </div><button type="submit">Approve</button></form></td>
+                            {% endfor %}
+                        </tr>
+                            {% for al in alapprove %}
+                        <tr>
+                            <td> {{al.user.first_name}} {{al.user.last_name}}</td>
+                            <td>{{al.date_start}}</td>
+                            <td>{{al.date_end}}</td>
+                            <td>{{al.location}}</td>
+                            <td><form> <div class="form-group form-check">
+    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+    <label class="form-check-label" for="exampleCheck1">Approve</label>
+  </div><button type="submit">Approve</button></form></td>
+                            {% endfor %}
+                        </tr>
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+
   
   {% endblock %}

@@ -1,8 +1,14 @@
-{% extends 'base.html' %} {% block page_title %}Rota view{% endblock %} {% block page_heading %}Home{% endblock %} {% block content %}
+{% extends 'base.html' %} {% block page_title %}Rota view{% endblock %} {% block page_heading %}{% endblock %} {% block content %}
 <div class="row">
-    <div class="col-sm-12 col-md-4 offset-md-4">
-        <form method="POST" id="filter" action="" enctype="multipart/form-data">
-            <input type="text" class="form-control" list="list" name="date" class='input_filter' placeholder="enter a date" />
+    <h1>Rota</h1>
+</div>
+
+<div class="row">
+    <div class="col-md-3"><i class="fas fa-angle-left fa-5x"></i></div>
+    <div class="col-md-6 form_holder">
+        <form method="POST" id="rota_add" class="form-inline" enctype="multipart/form-data">
+
+            <input type="text" name="date" class="form-control" placeholder="yyyy-mm-dd" />
 
             <input type="text" class="form-control" list="list2" name="team" class='input_filter' placeholder="TEAM" />
             <datalist id="list2">
@@ -10,51 +16,69 @@
          <option  value="{{ team.team }}">
            
          {% endfor %}
-      </datalist><br> {% csrf_token %}
-            <button type='submit' class="btn btn-success">go</button>
-
+      </datalist><br>
+            <button type='submit' class="btn"><i class="fas fa-search"></i></button> {% csrf_token %}
         </form>
+    </div>
+    <div class="col-md-3"><i class="fas fa-angle-right fa-5x float-right"></i></div>
 </div>
-</div>
 
-        <div class="row">
-            <div class="col-sm-12">
-                <table class="table rota_tab">
-                    <thead class="thead-dark">
-                        <tr>
 
-                            <th scope="col">Name</th>
-                            <th scope="col">Start</th>
-                            <th scope="col">Finish</th>
-                            <th scope="col">Day</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {% for select in selection %}
-                        <tr>
-                            <td> {{select.user.first_name}} {{select.user.last_name}}</td>
-                            <td>{{select.shift_start}}</td>
-                            <td>{{select.shift_end}}</td>
-                            <td>{{select.day}}</td>
-                        </tr>
-                        {% endfor %}
-                        <tr>
-                            <td> Overtime Shifts</td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                        {% for over in overtime %}
-                        <tr>
-                            <td> {{over.user.first_name}} {{over.user.last_name}}</td>
-                            <td>{{over.shift_start}}</td>
-                            <td>{{over.shift_end}}</td>
-                            <td>{{over.location}}</td>
-                            {% endfor %}
-                        </tr>
-                    </tbody>
-                </table>
 
-            </div>
+
+<div class="row ">
+    <div class="col-sm-4 left_place">
+        <div class="float-left">08:00</div>
+        <div class="float-right">18:30</div>
+
+        <br> {% for select in selection %}
+        <div class="col-md-4 rota_graph " style="margin-left:{{select.width}}cm; ">
+            <svg width="{{select.hours}}cm " height="30 ">
+  <rect width="{{select.hours}}cm " height="30 " style="fill:rgb(119,136,153);stroke-width:3;stroke:rgb(0,0,0) "  />
+</svg>
+
         </div>
-        {% endblock %}
+
+        {% endfor %}
+    </div>
+    <div class="col-sm-8 ">
+        <table class="table rota_tab ">
+            <thead class="thead-dark ">
+                <tr>
+
+                    <th scope="col ">Name</th>
+                    <th scope="col ">Start</th>
+                    <th scope="col ">Finish</th>
+                    <th scope="col ">Day</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for select in selection %}
+                <tr>
+                    <td> {{select.user.first_name}} {{select.user.last_name}}</td>
+                    <td>{{select.shift_start}}</td>
+                    <td>{{select.shift_end}}</td>
+                    <td>{{select.day}}</td>
+                </tr>
+                {% endfor %}
+                <tr>
+                    <td><b>Overtime Shifts</b> </td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                {% for over in overtime %}
+                <tr>
+                    <td> {{over.user.first_name}} {{over.user.last_name}}</td>
+                    <td>{{over.shift_start}}</td>
+                    <td>{{over.shift_end}}</td>
+                    <td>{{over.location}}</td>
+                    {% endfor %}
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+</div>
+
+{% endblock %}

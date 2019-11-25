@@ -11,3 +11,4 @@ class Overtime(models.Model):
     shift_start = models.TimeField(auto_now=False)
     shift_end = models.TimeField(auto_now=False)
     approved = models.BooleanField(default=False)
+    appmanager = models.CharField(max_length=254, null=True)

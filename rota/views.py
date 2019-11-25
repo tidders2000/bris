@@ -54,11 +54,8 @@ def rota_view(request):
         dd=value
         day=findDay(dd)
         team=request.POST.get('team')
-       
-       
         selection=Establishment.objects.filter(day=day).filter(team=team)
-        
         overtime=Overtime.objects.filter(Date=value).filter(team=team)
-        return render(request,'rota_view.html',{'team':team,'value':value, 'selection':selection,'day':day, 'overtime':overtime})
+        return render(request,'rota_view.html',{'team':team,'value':value, 'selection':selection,'day':day, 'overtime':overtime,'teams':teams})
     else:
         return render(request,'rota_view.html',{'teams':teams})
