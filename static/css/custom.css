@@ -70,6 +70,14 @@ nav{
 
 
 /*............................view Rota..............................*/
+
+.date_buttons{
+  color:#2C6CB5;
+}
+
+.date_buttons:hover{
+  color:royalblue;
+}
 .rota_tab{
     width:100%;
 }
@@ -77,6 +85,8 @@ nav{
 .form_holder{
   text-align: center;
 }
+
+
 
 
 /* Style the form - display items horizontally */
@@ -110,7 +120,7 @@ nav{
 /* Style the submit button */
 .form-inline button {
   padding: 10px 20px;
-  background-color: dodgerblue;
+  background-color: #2C6CB5;
   border: 1px solid #ddd;
   color: white;
 }

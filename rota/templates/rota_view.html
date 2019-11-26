@@ -4,7 +4,7 @@
 </div>
 
 <div class="row">
-    <div class="col-md-3"><i class="fas fa-angle-left fa-5x"></i></div>
+    <div class="col-md-3"><i class="fas fa-angle-left fa-5x date_buttons"></i></div>
     <div class="col-md-6 form_holder">
         <form method="POST" id="rota_add" class="form-inline" enctype="multipart/form-data">
 
@@ -20,7 +20,7 @@
             <button type='submit' class="btn"><i class="fas fa-search"></i></button> {% csrf_token %}
         </form>
     </div>
-    <div class="col-md-3"><i class="fas fa-angle-right fa-5x float-right"></i></div>
+    <div class="col-md-3"><i class="fas fa-angle-right fa-5x float-right date_buttons"></i></div>
 </div>
 
 
@@ -28,8 +28,10 @@
 
 <div class="row ">
     <div class="col-sm-4 left_place">
-        <div class="float-left">08:00</div>
+        <table class='table'><thead><tr><th><div class="float-left">08:00</div>
         <div class="float-right">18:30</div>
+        </th></tr></thead></table>
+        
 
         <br> {% for select in selection %}
         <div class="col-md-4 rota_graph " style="margin-left:{{select.width}}cm; ">
@@ -43,7 +45,7 @@
     </div>
     <div class="col-sm-8 ">
         <table class="table rota_tab ">
-            <thead class="thead-dark ">
+            <thead class=" ">
                 <tr>
 
                     <th scope="col ">Name</th>
