@@ -71,6 +71,12 @@ nav{
 
 /*............................view Rota..............................*/
 
+.rota_holder{
+  margin-top: 100px;/*sets gap between table and search*/
+}
+.ot_col{
+ color:#FF7F50;
+}
 .date_buttons{
   color:#2C6CB5;
 }

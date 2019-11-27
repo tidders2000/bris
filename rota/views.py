@@ -1,11 +1,14 @@
-from django.shortcuts import render
+from django.shortcuts import render, HttpResponseRedirect, redirect
 import datetime 
 import calendar
-
+from datetime import timedelta
 from estab.models import Establishment
 from django.contrib.auth.models import User
 from overtime.models import Overtime
+import dateutil.parser
 
+value=[]
+team=[]
 def rota(request):
     """ gets days and teams for page and sets two empty var """
     days=Establishment.objects.values('day').distinct()
@@ -42,7 +45,7 @@ def rota_view(request):
     """ gets days and teams for page and sets two empty var """
     days=Establishment.objects.values('day').distinct()
     teams=Establishment.objects.values('team').distinct()
-    value=[]
+    """ value=[]"""
     def findDay(date): 
         born = datetime.datetime.strptime(date,'%Y-%m-%d').weekday() 
         return (calendar.day_name[born])
@@ -56,6 +59,18 @@ def rota_view(request):
         team=request.POST.get('team')
         selection=Establishment.objects.filter(day=day).filter(team=team)
         overtime=Overtime.objects.filter(Date=value).filter(team=team)
-        return render(request,'rota_view.html',{'team':team,'value':value, 'selection':selection,'day':day, 'overtime':overtime,'teams':teams})
+        new=dateutil.parser.parse(value)
+        datemax=new+timedelta(days=1)
+        datemax=datey.strftime('%Y-%m-%d')
+        dateymin=new-timedelta(days=1)
+        dateymin=dateymin.strftime('%Y-%m-%d')
+        
+        return render(request,'rota_view.html',{'dateymin':dateymin, 'datemax':datemax,'team':team,'value':value, 'selection':selection,'day':day, 'overtime':overtime,'teams':teams})
     else:
         return render(request,'rota_view.html',{'teams':teams})
+
+def increase(request):
+    
+    return redirect('rota_view',date='2019-11-11',team='admin')
+     
+   

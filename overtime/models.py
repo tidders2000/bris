@@ -10,5 +10,7 @@ class Overtime(models.Model):
     Date = models.DateField(auto_now=False)
     shift_start = models.TimeField(auto_now=False)
     shift_end = models.TimeField(auto_now=False)
+    hours = models.DecimalField(max_digits=3, decimal_places=1,) 
     approved = models.BooleanField(default=False)
     appmanager = models.CharField(max_length=254, null=True)
+    width = models.CharField(max_length=254, default='20')
