@@ -78,11 +78,14 @@ nav{
  color:#FF7F50;
 }
 .date_buttons{
-  color:#2C6CB5;
+  color:white;
+  background-color: #2C6CB5;
 }
 
 .date_buttons:hover{
-  color:royalblue;
+  color:black;
+  background-color: royalblue;
+  
 }
 .rota_tab{
     width:100%;

@@ -4,9 +4,9 @@
 <div class="row">
    <div class="col-md-3">
         <form method="POST">
-            <input type="hidden" name="team" value="admin">
+            <input type="hidden" name="team" value="{{team}}">
             <input type="hidden" name="date" value='{{dateymin}}'>
-            <button type='submit'><i class="fas fa-angle-left fa-5x date_buttons"></i></button>
+            <button type='submit'class='date_buttons'><i class="fas fa-angle-left fa-5x "></i></button>
         {% csrf_token %}
         </form>
     </div>
@@ -27,9 +27,9 @@
     </div>
     <div class="col-md-3">
         <form method="POST">
-            <input type="hidden" name="team" value="admin">
+            <input type="hidden" name="team" value="{{team}}">
             <input type="hidden" name="date" value='{{datemax}}'>
-            <button type='submit'><i class="fas fa-angle-right fa-5x float-right date_buttons"></i></button>
+            <button type='submit' class='float-right date_buttons '><i class="fas fa-angle-right fa-5x  date_buttons "></i></button>
         {% csrf_token %}
         </form>
     </div>
@@ -111,8 +111,4 @@
     </div>
 </div>
 
-<form action="increase/" method="POST">
-    {% csrf_token %}
-    <button type="submit">Make Immortal</button>
-</form>
-{{value}} {{datey}} {% endblock %}
+ {% endblock %}

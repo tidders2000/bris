@@ -61,10 +61,10 @@ def rota_view(request):
         overtime=Overtime.objects.filter(Date=value).filter(team=team)
         new=dateutil.parser.parse(value)
         datemax=new+timedelta(days=1)
-        datemax=datey.strftime('%Y-%m-%d')
+        datemax=datemax.strftime('%Y-%m-%d')
         dateymin=new-timedelta(days=1)
         dateymin=dateymin.strftime('%Y-%m-%d')
-        
+        team=team
         return render(request,'rota_view.html',{'dateymin':dateymin, 'datemax':datemax,'team':team,'value':value, 'selection':selection,'day':day, 'overtime':overtime,'teams':teams})
     else:
         return render(request,'rota_view.html',{'teams':teams})
