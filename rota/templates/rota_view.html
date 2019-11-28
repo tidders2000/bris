@@ -52,7 +52,7 @@
 
 
         <br> {% for select in selection %}
-        <div class="col-md-4 rota_graph " style="margin-left:{{select.width}}cm; ">
+        <div class="col-md-4 rota_graph {{select.user.id}}" style="margin-left:{{select.width}}cm; ">
             <svg width="{{select.hours}}cm " height="30">
   <rect width="{{select.hours}}cm " height="30 " style="fill:rgb(119,136,153);stroke-width:3;stroke:rgb(0,0,0) " data-toggle="popover" title="{{select.user.first_name}} {{select.user.last_name}}" data-content="{{select.shift_start}}-{{select.shift_end}} " />
 </svg>
@@ -84,7 +84,7 @@
             </thead>
             <tbody>
                 {% for select in selection %}
-                <tr>
+                <tr class="{{select.user.id}}">
                     <td> {{select.user.first_name}} {{select.user.last_name}}</td>
                     <td>{{select.shift_start}}</td>
                     <td>{{select.shift_end}}</td>
@@ -111,4 +111,8 @@
     </div>
 </div>
 
+{% for stu in stuff %}
+{{stu.user.pk}}
+{% endfor %}
+<div id='hide'>Hello</div>
  {% endblock %}
