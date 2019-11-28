@@ -111,8 +111,37 @@
     </div>
 </div>
 
-{% for stu in stuff %}
-{{stu.user.pk}}
+
+
+
+
+
+
+<h1>Holiday</h1><button id='hide'>Show/Hide</button>
+
+<table class="table table-bordered table-dark">
+  <thead>
+    
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">name</th>
+      <th scope="col">start</th>
+      <th scope="col">end</th>
+      <th scope="col">days</th>
+      
+    </tr>
+  </thead>
+  <tbody>
+      
+      {% for stu in stuff %}
+    <tr>
+      <th scope="row"><div class='test'>{{stu.user.pk}}</div></th>
+      <td>{{stu.user.first_name}} {{stu.user.last_name}}</td>
+      <td> {{stu.date_start}}</td>
+      <td> {{stu.date_end}}</td>
+      <td> {{stu.days}}</td>
+    </tr>
 {% endfor %}
-<div id='hide'>Hello</div>
+  </tbody>
+</table>
  {% endblock %}
