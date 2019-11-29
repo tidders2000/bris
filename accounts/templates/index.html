@@ -24,6 +24,7 @@
             </div>
  
  </div>
+ 
  <div class="row">
    <h1>My Hours</h1>
  </div>
@@ -33,18 +34,21 @@
      <div class="col-sm-12 col-md-6 offset-md-3">
          <table class="table table-striped">
             <thead>
-             <tr>
+                             <tr>
                  <th scope="col">Day</td>
                  <th scope="col">Start</td>
                  <th scope="col">Finish</td>
              </tr>
                </thead>
                <tbody>
+                   {% for hour in myhours %}
              <tr>
-                 <td>data</td>
-                    <td>data</td>
-                       <td>data</td>
+                 
+                 <td>{{hour.day}}</td>
+                    <td>{{hour.shift_start}}</td>
+                       <td>{{hour.shift_end}}</td>
              </tr>
+             {% endfor %}
              </tbody>
          </table>
          
@@ -52,6 +56,41 @@
     
     
  </div>
+ <div class="row">
+      <h1>Holiday</h1>
+ </div>
+ 
+ <div class="row">
+    
+
+<table class="table table-bordered table-dark">
+  <thead>
+    
+    <tr>
+      
+    
+      <th scope="col">start</th>
+      <th scope="col">end</th>
+      <th scope="col">days</th>
+      
+    </tr>
+  </thead>
+  <tbody>
+      
+      {% for leave in myleave %}
+       
+    <tr>
+     
+   
+      <td> {{leave.date_start}}</td>
+      <td> {{leave.date_end}}</td>
+      <td> {{leave.days}}</td>
+    </tr>
+{% endfor %}
+  </tbody>
+</table>
+ </div>
+ 
  
          <div class="row">
           <h1>My Approvals</h1>

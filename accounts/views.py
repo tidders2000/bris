@@ -4,6 +4,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from accounts.forms import UserLoginForm, UserRegistrationForm
 from overtime.models import Overtime
+from estab.models import Establishment
 from leave.models import Leave
 
 @login_required
@@ -11,7 +12,9 @@ def index(request):
     current_user = request.user.pk
     otapprove=Overtime.objects.filter(appmanager=current_user,approved=False)
     alapprove=Leave.objects.filter(appmanager=current_user,approved=False)
-    return render(request,  'index.html', {'otapprove':otapprove, 'alapprove':alapprove})
+    myhours=Establishment.objects.filter(user=current_user)
+    myleave=Leave.objects.filter(user=current_user)
+    return render(request,'index.html', {'otapprove':otapprove, 'alapprove':alapprove, 'myhours':myhours,'myleave':myleave})
 
 @login_required
 def logout(request):

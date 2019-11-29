@@ -1,8 +1,10 @@
 {% extends 'base.html' %} {% block page_title %}Rota view{% endblock %} {% block page_heading %}{% endblock %} {% block content %}
 
 
+
 <div class="row">
    <div class="col-md-3">
+       
         <form method="POST">
             <input type="hidden" name="team" value="{{team}}">
             <input type="hidden" name="date" value='{{dateymin}}'>
@@ -11,6 +13,7 @@
         </form>
     </div>
     <div class="col-md-6 form_holder">
+        <div class='col-sm-12 day'><h1>{{day}}</h1></div>
         <form method="POST" id="rota_add" class="form-inline" enctype="multipart/form-data">
 
             <input type="date" name="date" class="form-control" placeholder="yyyy-mm-dd" />
@@ -83,6 +86,7 @@
                     <th scope="col ">Start</th>
                     <th scope="col ">Finish</th>
                     <th scope="col ">Day</th>
+                    <th scope="col ">Location</th>
                 </tr>
             </thead>
             <tbody>
@@ -92,6 +96,7 @@
                     <td>{{select.shift_start}}</td>
                     <td>{{select.shift_end}}</td>
                     <td>{{select.day}}</td>
+                    <td>{{select.location}}</td>
                 </tr>
                 {% endfor %}
                 <tr>

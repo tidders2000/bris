@@ -70,7 +70,9 @@ nav{
 
 
 /*............................view Rota..............................*/
-
+.day{
+  text-align: center;
+}
 .test{
   display:none;
 }
