@@ -65,7 +65,7 @@ def rota_view(request):
         overtime=Overtime.objects.filter(Date=value).filter(team=team)
         
         
-        stuff=Leave.objects.filter(date_end__gte=value, date_start__lte=value)
+        stuff=Leave.objects.filter(date_end__gte=value, date_start__lte=value).filter(team=team)
         
         new=dateutil.parser.parse(value)
         datemax=new+timedelta(days=1)

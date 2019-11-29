@@ -36,6 +36,7 @@
 </div>
 
 
+</div>
 
 <div class="row rota_holder">
     <div class="col-sm-4 left_place">
@@ -46,7 +47,9 @@
                         <div class="float-left">08:00</div>
                         <div class="float-right">18:30</div>
                     </th>
+                    
                 </tr>
+                
             </thead>
         </table>
 
@@ -54,7 +57,7 @@
         <br> {% for select in selection %}
         <div class="col-md-4 rota_graph {{select.user.id}}" style="margin-left:{{select.width}}cm; ">
             <svg width="{{select.hours}}cm " height="30">
-  <rect width="{{select.hours}}cm " height="30 " style="fill:rgb(119,136,153);stroke-width:3;stroke:rgb(0,0,0) " data-toggle="popover" title="{{select.user.first_name}} {{select.user.last_name}}" data-content="{{select.shift_start}}-{{select.shift_end}} " />
+  <rect width="{{select.hours}}cm " height="30 " class="{{select.location}}"style="stroke-width:3;stroke:rgb(0,0,0)" data-toggle="popover" title="{{select.user.first_name}} {{select.user.last_name}}" data-content="{{select.shift_start}}-{{select.shift_end}} " />
 </svg>
 
         </div>
@@ -117,7 +120,7 @@
 
 
 
-<h1>Holiday</h1><button id='hide'>Show/Hide</button>
+<h1>Holiday</h1><button id='togg'>Show/Hide</button>
 
 <table class="table table-bordered table-dark">
   <thead>
@@ -134,8 +137,9 @@
   <tbody>
       
       {% for stu in stuff %}
+      <div class='test'>{{stu.user.pk}}</div> 
     <tr>
-      <th scope="row"><div class='test'>{{stu.user.pk}}</div></th>
+      <td >{{stu.user.pk}}</td>
       <td>{{stu.user.first_name}} {{stu.user.last_name}}</td>
       <td> {{stu.date_start}}</td>
       <td> {{stu.date_end}}</td>

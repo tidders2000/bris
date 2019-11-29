@@ -6,17 +6,20 @@ $(function() {
   });
   /*hides holiday on the rota and chat*/
   array = []
-  $('.hide').toggle(function() {
+
     $(".test").each(function() {
       array.push(
-        $(this).text());
-
-
+       parseInt( $(this).text()));
+   console.log(array)
     });
-    $.each(array, function(value) {
-      $('.' + value).hide();
+    $("#togg").click(function() { 
+      
+   $.each( array, function( key, value ) {
+     $('.'+value).toggle()
+
     });
   });
+});
+
  
- 
-}); 
+

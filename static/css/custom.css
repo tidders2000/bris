@@ -2,7 +2,7 @@
 
 body{
     font-family: 'Bitter', serif;
-    font-size: 12px;
+    font-size: 14px;
 }
 
 h1, h2, h3,h4, h5{
@@ -70,6 +70,18 @@ nav{
 
 
 /*............................view Rota..............................*/
+
+.test{
+  display:none;
+}
+.bingham{
+ fill:rgb(230,230,250);
+}
+
+.cotgrave ,.cotgrave_col{
+   fill:rgb(70,130,180);
+}
+
 
 .rota_holder{
   margin-top: 100px;/*sets gap between table and search*/
