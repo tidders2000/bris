@@ -1,143 +1,185 @@
-{% extends 'base.html' %} {% block page_title %}Home Page{% endblock %} {% block page_heading %}Home{% endblock %}
-  {% block content %}
-  
- <div class="row">
-     
-         <div class="col-md-4">
-          <div class="data-circle">
-           info
-           
-          </div>
-          
-          </div>
-          <div class="col-md-4">
-            <div class="data-circle">
-           info
-           
-          </div>
-          </div>
-           <div class="col-md-4">
-             <div class="data-circle">
-           info
-           
-          </div>
-            </div>
- 
- </div>
- 
- <div class="row">
-   <h1>My Hours</h1>
- </div>
- 
- <div class="row">
- 
-     <div class="col-sm-12 col-md-6 offset-md-3">
-         <table class="table table-striped">
-            <thead>
-                             <tr>
-                 <th scope="col">Day</td>
-                 <th scope="col">Start</td>
-                 <th scope="col">Finish</td>
-             </tr>
-               </thead>
-               <tbody>
-                   {% for hour in myhours %}
-             <tr>
-                 
-                 <td>{{hour.day}}</td>
-                    <td>{{hour.shift_start}}</td>
-                       <td>{{hour.shift_end}}</td>
-             </tr>
-             {% endfor %}
-             </tbody>
-         </table>
-         
-     </div>
-    
-    
- </div>
- <div class="row">
-      <h1>Holiday</h1>
- </div>
- 
- <div class="row">
-    
+{% extends 'base.html' %} {% block page_title %}Home Page{% endblock %} {% block page_heading %}Home{% endblock %} {% block content %}
 
-<table class="table table-bordered table-dark">
-  <thead>
-    
-    <tr>
-      
-    
-      <th scope="col">start</th>
-      <th scope="col">end</th>
-      <th scope="col">days</th>
-      
-    </tr>
-  </thead>
-  <tbody>
-      
-      {% for leave in myleave %}
-       
-    <tr>
-     
-   
-      <td> {{leave.date_start}}</td>
-      <td> {{leave.date_end}}</td>
-      <td> {{leave.days}}</td>
-    </tr>
-{% endfor %}
-  </tbody>
-</table>
- </div>
- 
- 
-         <div class="row">
-          <h1>My Approvals</h1>
-            <div class="col-sm-12">
-                <table class="table rota_tab">
-                    <thead class="thead-dark">
-                        <tr>
+<div class="row">
 
-                            <th scope="col">Name</th>
-                            <th scope="col">Start</th>
-                            <th scope="col">Finish</th>
-                            <th scope="col">Location</th>
-                            <th scope="col">Approve</th>
-                          
-                        </tr>
-                    </thead>
-                    <tbody>
-                      
-                        {% for ot in otapprove %}
-                        <tr>
-                            <td> {{ot.user.first_name}} {{over.user.last_name}}</td>
-                            <td>{{ot.shift_start}}</td>
-                            <td>{{ot.shift_end}}</td>
-                            <td>{{ot.location}}</td>
-                            <td><form> <div class="form-group form-check">
-    <input type="checkbox" class="form-check-input" id="exampleCheck1">
-    <label class="form-check-label" for="exampleCheck1">Approve</label>
-  </div><button type="submit">Approve</button></form></td>
-                            {% endfor %}
-                        </tr>
-                            {% for al in alapprove %}
-                        <tr>
-                            <td> {{al.user.first_name}} {{al.user.last_name}}</td>
-                            <td>{{al.date_start}}</td>
-                            <td>{{al.date_end}}</td>
-                            <td>{{al.location}}</td>
-                            <td><form> <div class="form-group form-check">
-    <input type="checkbox" class="form-check-input" id="exampleCheck1">
-    <label class="form-check-label" for="exampleCheck1">Approve</label>
-  </div><button type="submit">Approve</button></form></td>
-                            {% endfor %}
-                        </tr>
-                    </tbody>
-                </table>
+    <div class="col-md-4">
+        <div class="data-circle">
+            info
 
-            </div>
         </div>
 
-  
-  {% endblock %}
+    </div>
+    <div class="col-md-4">
+        <div class="data-circle">
+            info
+
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="data-circle">
+            info
+
+        </div>
+    </div>
+
+</div>
+
+<div class="row">
+    <h1>My Hours</h1>
+</div>
+
+<div class="row">
+
+    <div class="col-sm-12 col-md-6 offset-md-3">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">Day</td>
+                        <th scope="col">Start</td>
+                            <th scope="col">Finish</td>
+                </tr>
+            </thead>
+            <tbody>
+                {% for hour in myhours %}
+                <tr>
+
+                    <td>{{hour.day}}</td>
+                    <td>{{hour.shift_start}}</td>
+                    <td>{{hour.shift_end}}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+    </div>
+
+
+</div>
+}
+
+<div class="row">
+    <h1>My Overtime</h1>
+</div>
+
+<div class="row">
+
+
+    <table class="table table-bordered table-dark">
+        <thead>
+
+            <tr>
+
+
+                <th scope="col">Date</th>
+                <th scope="col">hours</th>
+                <th scope="col">Approved</th>
+
+            </tr>
+        </thead>
+        <tbody>
+
+            {% for over in myot %}
+
+            <tr>
+                <td> {{over.Date}}</td>
+                <td> {{over.hours}}</td>
+                <td> {{over.approved}}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+<div class="row">
+    <h1>My Holidays</h1>
+</div>
+
+<div class="row">
+
+
+    <table class="table table-bordered table-dark">
+        <thead>
+
+            <tr>
+
+
+                <th scope="col">start</th>
+                <th scope="col">end</th>
+                <th scope="col">days</th>
+
+            </tr>
+        </thead>
+        <tbody>
+
+            {% for leave in myleave %}
+
+            <tr>
+
+
+                <td> {{leave.date_start}}</td>
+                <td> {{leave.date_end}}</td>
+                <td> {{leave.days}}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+
+<div class="row">
+    <h1>My Approvals</h1>
+    <div class="col-sm-12 approvals">
+        <table class="table rota_tab">
+            <thead class="thead-dark">
+                <tr>
+
+                    <th scope="col">Name</th>
+                    <th scope="col">Start</th>
+                    <th scope="col">Finish</th>
+                    <th scope="col">Location</th>
+                    <th scope="col">Approve</th>
+
+                </tr>
+            </thead>
+            <tbody>
+
+                {% for ot in otapprove %}
+                <tr>
+                    <td> {{ot.user.first_name}} {{over.user.last_name}}</td>
+                    <td>{{ot.shift_start}}</td>
+                    <td>{{ot.shift_end}}</td>
+                    <td>{{ot.location}}</td>
+                    <td>
+                        <form method='POST'>
+                            <div class="form-group form-check">
+                                <input type="checkbox" class="form-check-input" id="ot" name='otapp' value="True">
+                                <input type="hidden" name="ot_pk" value="{{ot.pk}}"/>
+                                <label class="form-check-label" for="exampleCheck1">Approve</label>
+                                  {% csrf_token %}
+                            </div><button type="submit">Approve</button></form>
+                    </td>
+                    {% endfor %}
+                </tr>
+                {% for al in alapprove %}
+                <tr>
+                    <td> {{al.user.first_name}} {{al.user.last_name}}</td>
+                    <td>{{al.date_start}}</td>
+                    <td>{{al.date_end}}</td>
+                    <td>{{al.location}}</td>
+                    <td>
+                        <form>
+                            <div class="form-group form-check" method='POST'>
+                                <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                <label class="form-check-label" for="exampleCheck1">Approve</label>
+                            </div><button type="submit">Approve</button></form>
+                    </td>
+                    {% endfor %}
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+</div>
+
+
+{% endblock %}

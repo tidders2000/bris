@@ -14,7 +14,16 @@ def index(request):
     alapprove=Leave.objects.filter(appmanager=current_user,approved=False)
     myhours=Establishment.objects.filter(user=current_user)
     myleave=Leave.objects.filter(user=current_user)
-    return render(request,'index.html', {'otapprove':otapprove, 'alapprove':alapprove, 'myhours':myhours,'myleave':myleave})
+    myot=Overtime.objects.filter(user=current_user,approved=True)
+    if request.method=="POST":
+        otapp=request.POST.get('otapp')
+        ot_pk=request.POST.get('ot_pk')
+        t = Overtime.objects.get(id=ot_pk)
+        t.approved = otapp  
+        t.save()
+        return render(request,'index.html', {'myot':myot,'otapprove':otapprove, 'alapprove':alapprove, 'myhours':myhours,'myleave':myleave})
+    else:
+     return render(request,'index.html', {'myot':myot,'otapprove':otapprove, 'alapprove':alapprove, 'myhours':myhours,'myleave':myleave})
 
 @login_required
 def logout(request):
