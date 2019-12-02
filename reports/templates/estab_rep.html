@@ -1,0 +1,12 @@
+{% extends 'base.html' %}{% load bootstrap_tags %} {% block page_title %}Rotas{% endblock %} {% block page_heading %}Home{% endblock %} {% block content %}
+
+<h1>{{ title }}</h1>
+
+number of days:{{num_days}}<br>
+hours for mOnday:{{hours}}<br>
+unallocated hours{{hours_ua}}<br>
+total mondays in month{{mondays}}<br>
+total hours of overtime{{ot_hours}}
+
+
+{% endblock%}

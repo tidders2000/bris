@@ -13,4 +13,5 @@ class Overtime(models.Model):
     hours = models.DecimalField(max_digits=3, decimal_places=1,) 
     approved = models.BooleanField(default=False)
     appmanager = models.CharField(max_length=254, null=True)
+    appmanagerun = models.CharField(max_length=254, null=True)
     width = models.CharField(max_length=254, default='20')

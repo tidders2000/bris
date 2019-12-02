@@ -1,22 +1,21 @@
 {% extends 'base.html' %}{% load bootstrap_tags %} {% block page_title %}Rotas{% endblock %} {% block page_heading %}Home{% endblock %}
   {% block content %}
   <h1>Request Overtime</h1>
-    <form  method="POST" id="ot" action="" enctype="multipart/form-data">
-        
-      
-          {{ form | as_bootstrap }}
-          {% csrf_token %} 
-          
-          <input type="text" class="form-control"list="list2" name="appmanager" class='input_filter'  placeholder="Approver"/>
-          <datalist id="list2">
-         {% for approve in approver %}
-         <option  value="{{ approve.username}}">
-       <input type="hidden" name="appID" value="{{approve.pk}}">
-           
-         {% endfor %}
+    <form method="POST" id="ot">
+    {{ form | as_bootstrap }}
+
+
+    <input type="text" class="form-control" list="list" name="appmanager" class='input_filter' placeholder="Approver" />
+    
+    <datalist id="list">
+      {% for approve in approver %}
+            <option value="{{ approve.username }}">
+             <input type="hidden" name="appID" value="{{approve.pk}}">
+           {% endfor %}
       </datalist><br>
-          <button type='submit'>Submit</button>
-      </form>
-     {{datas}}
+       {% csrf_token %}
+    <button type='submit'>Submit</button>
+</form>
+    
   {% endblock %}
   

@@ -1,0 +1,52 @@
+{% extends 'base.html' %}{% load bootstrap_tags %} {% block page_title %}Rotas{% endblock %} {% block page_heading %}Home{% endblock %} {% block content %}
+
+<h1>{{ title }}</h1>
+
+<div class="row">
+    <div class="col-sm10 offset-sm-1">
+       
+    </div>
+</div>
+<div class="row">
+    <form method='POST'>
+        <input type='date' name='start'/>
+        <input type='date' name='finish'/>
+        {% csrf_token %} 
+        <button type='submit'>Submit</button>
+    </form>
+</div>
+<div class="row">
+    <table class="table">
+  <thead>
+    <tr>
+     
+      <th scope="col">Name</th>
+      <th scope="col">Team</th>
+      <th scope="col">Date</th>
+      <th scope="col">Shift</th>
+      <th scope="col">Hours</th>
+      <th scope="col">Authorised</th>
+      <th scope="col">Approver</th>
+    </tr>
+  </thead>
+  <tbody>
+       {% for over in overtime %}
+    <tr>
+     
+      <td>{{over.user.first_name}} {{over.user.last_name}} </td>
+      <td>{{over.team}}</td>
+      <td>{{over.Date}}</td>
+      <td>{{over.shift_start}} - {{over.shift_end}}</td>
+      <td>{{over.hours}}</td>
+      <td>{{over.approved}}</td>
+      <td>{{over.appmanagerun}}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+   
+</div>
+{% endblock %}
+
+   
+    

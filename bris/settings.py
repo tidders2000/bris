@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'rota',
     'leave',
     'overtime',
+    'reports',
 ]
 
 MIDDLEWARE = [

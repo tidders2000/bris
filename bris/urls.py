@@ -19,6 +19,7 @@ from accounts.views import index
 from rota import urls as urls_rota
 from overtime import urls as urls_overtime
 from leave import urls as urls_leave
+from reports import urls as urls_reports
 
 from accounts import urls as urls_accounts
 
@@ -29,5 +30,6 @@ urlpatterns = [
     url(r'^accounts/', include(urls_accounts)),
     url(r'^rota/', include(urls_rota)),
     url(r'^overtime/', include(urls_overtime)),
-    url(r'^leave/', include(urls_leave))
+    url(r'^leave/', include(urls_leave)),
+    url(r'^reports/', include(urls_reports)),
 ]
