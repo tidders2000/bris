@@ -1,12 +1,25 @@
 {% extends 'base.html' %}{% load bootstrap_tags %} {% block page_title %}Rotas{% endblock %} {% block page_heading %}Home{% endblock %} {% block content %}
 
 <h1>{{ title }}</h1>
+<form method="POST">
+         <input type="text" class="form-control" list="list" name="month" class='input_filter'  placeholder="month" />
+    
+    <datalist id="list">
+      {% for month in monthly %}
+            <option value="{{month.month_num}}">
+            
+           {% endfor %}
+      </datalist><br>
+        
+     <button type='submit'>Submit</button>
+      {% csrf_token %} 
+</form>
 
-number of days:{{num_days}}<br>
-hours for mOnday:{{hours}}<br>
-unallocated hours{{hours_ua}}<br>
-total mondays in month{{mondays}}<br>
-total hours of overtime{{ot_hours}}
+{% for est in estab%}
+ {{est}}
+{% endfor %}<br>
+
+
 
 
 {% endblock%}

@@ -3,6 +3,8 @@ from overtime.models import Overtime
 from estab.models import Establishment
 import calendar
 from django.db.models import Sum
+import datetime
+from .models import months
 
 def reports(request):
     return render(request,'reports.html')
@@ -19,18 +21,36 @@ def overtime_rep(request):
 
 def estab_rep(request):
     title='Establishment Report'
-     
-    year = 2019
-    month = 11
-    day_to_count = calendar.MONDAY
-    matrix = calendar.monthcalendar(year,month)
-    num_days = sum(1 for x in matrix if x[day_to_count] != 0)
-    hour=Establishment.objects.filter(day='Monday').aggregate(Sum('hours')).get('hours__sum',0.0)
-    hours_ua=Establishment.objects.filter(day='Monday').filter(username='unallocated').aggregate(Sum('hours')).get('hours__sum',0.0)
-    ot_hours=Overtime.objects.filter(Date__gte='2019-11-01', Date__lte='2019-11-30').aggregate(Sum('hours')).get('hours__sum',0.0)
-    hours=hour
-    hours_ua=hour-hours_ua
-    mondays=num_days*hours
+    monthly=months.objects.all()
+    result=[]
+    estab=[]
+    unu=[]
+    x=0
+    if request.method=='POST':
+        num = request.POST.get('month')
+        
+        year = 2019
+        month= int(num)
+        days=['Monday','Tuesday','Wednesday','Thursday','Friday']
+        dayVals=[1,2,3,4,5]
+       
+        for day in dayVals:
+           matrix = calendar.monthcalendar(year,month)
+           num_days = sum(1 for x in matrix if x[day] != 0)
+           result.append(num_days)
+           
+        for day in days:
+            est=Establishment.objects.filter(day=day).aggregate(Sum('hours')).get('hours__sum',0.00)
+            unused=establishment=Establishment.objects.filter(day=day).filter(username='unallocated').aggregate(Sum('hours')).get('hours__sum',0.00)
+            if not est:
+                est=0
+            if not unused:
+                unused=0
+            new=est*int(result[x])
+            u=unused*int(result[x])
+            estab.append(new)
+            unu.append(u)
+            x=x+1
+        return render(request,'estab_rep.html',{'result':result,'estab':estab,'unused':unused})
     
-    
-    return render(request,'estab_rep.html',{'title':title,'num_days':num_days,'hours':hours,'mondays':mondays,'hours_ua':hours_ua,'ot_hours':ot_hours})
+    return render(request,'estab_rep.html',{'monthly':monthly})
