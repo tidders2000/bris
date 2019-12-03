@@ -26,14 +26,17 @@ def estab_rep(request):
     estab=[]
     unu=[]
     x=0
+    
+    
     if request.method=='POST':
         num = request.POST.get('month')
-        
         year = 2019
         month= int(num)
         days=['Monday','Tuesday','Wednesday','Thursday','Friday']
         dayVals=[1,2,3,4,5]
-       
+        
+        start = months.objects.filter(month_num=num).values_list('start', flat=True)
+        finish = months.objects.filter(month_num=num).values_list('finsh', flat=True)
         for day in dayVals:
            matrix = calendar.monthcalendar(year,month)
            num_days = sum(1 for x in matrix if x[day] != 0)
@@ -51,6 +54,11 @@ def estab_rep(request):
             estab.append(new)
             unu.append(u)
             x=x+1
-        return render(request,'estab_rep.html',{'result':result,'estab':estab,'unused':unused})
+        a=sum(estab)
+        b=sum(unu)
+        c=a+b
+        overtime=Overtime.objects.filter(Date__gte=start, Date__lte=finish).aggregate(Sum('hours')).get('hours__sum',0.00)
+        total=a-b+overtime
+        return render(request,'estab_rep.html',{'result':result,'estab':estab,'unu':unu,'overtime':overtime,'total':total,'c':c})
     
     return render(request,'estab_rep.html',{'monthly':monthly})
