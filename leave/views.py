@@ -3,8 +3,9 @@ from .forms import leave_form
 from.models import Leave
 from datetime import datetime
 from django.contrib.auth.models import User
-
+from django.contrib.auth.decorators import login_required
 # Create your views here.
+@login_required
 def leave(request):
     form=leave_form()
     approver=User.objects.filter(groups__name='managers')

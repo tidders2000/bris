@@ -8,10 +8,18 @@ from django.contrib.auth.models import User
 from overtime.models import Overtime
 import dateutil.parser
 from django.db.models import Q
+from django.contrib.auth.decorators import login_required, user_passes_test
 
 value=[]
 team=[]
 
+def is_member(user):
+    return user.groups.filter(name='admin').exists()
+
+
+
+@login_required
+@user_passes_test(is_member, login_url='/rota/rota_view')
 def rota(request):
     """ gets days and teams for page and sets two empty var """
     days=Establishment.objects.values('day').distinct()
@@ -43,7 +51,7 @@ def rota(request):
      return render(request,'rota.html',{'days':days,'teams':teams, 'selection':selection})
 
 
-
+@login_required
 def rota_view(request):
     """ gets days and teams for page and sets two empty var """
     days=Establishment.objects.values('day').distinct()

@@ -3,8 +3,9 @@ from django.contrib.auth.models import User
 from .forms import overtime_form
 from .models import Overtime
 from datetime import datetime
+from django.contrib.auth.decorators import login_required
 
-
+@login_required()
 def overtime(request):
     
     form=overtime_form()
