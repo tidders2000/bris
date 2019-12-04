@@ -1,12 +1,11 @@
-from django.shortcuts import render, HttpResponse
-from django.views.generic import View
+from django.shortcuts import render
 from overtime.models import Overtime
 from estab.models import Establishment
 import calendar
 from django.db.models import Sum
 import datetime
 from .models import months
-from .utils import render_to_pdf
+
 def reports(request):
     return render(request,'reports.html')
 
@@ -63,16 +62,3 @@ def estab_rep(request):
         return render(request,'estab_rep.html',{'result':result,'estab':estab,'unu':unu,'overtime':overtime,'total':total,'c':c})
     
     return render(request,'estab_rep.html',{'monthly':monthly})
-
-
-def pdf(request):
-        overtime=Overtime.objects.filter(Date__gte='2019-11-01', Date__lte='2019-11-30')
-        data = {
-             'today': datetime.date.today(), 
-             'amount': 39.99,
-            'customer_name': 'Cooper Mann',
-            'order_id': 1233434,
-            'overtime':overtime
-        }
-        pdf = render_to_pdf('pdf/invoice.html', data)
-        return HttpResponse(pdf, content_type='application/pdf')

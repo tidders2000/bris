@@ -17,7 +17,7 @@
 <!-- bootstrap nav component -->
 
 <nav class="navbar navbar-light fixed-top">
-    <a class="navbar-brand" href="#"><img src="{% static 'images/bhg_group.jpg' %}"/></a>
+    <a class="navbar-brand" href="{% url 'index' %}"><img src="{% static 'images/bhg_group.jpg' %}"/></a>
     <div class='center title'>BRIS</div>
     <div class="navbar-toggler"  data-toggle="collapse" data-target="#collapsingNavbar1">
         <span class="navbar-toggler-icon hb"></span>
@@ -40,6 +40,12 @@
          {% if perms.rota.can_add_rota %}
               <li class="nav-item">
                 <a class="nav-link" href="{% url 'rota' %}">Establishment Update</a>
+            </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'overtime_rep' %}">Overtime Report</a>
+            </li>
+               <li class="nav-item">
+                <a class="nav-link" href="{% url 'estab_rep' %}">Establishment Report</a>
             </li>
             {% endif %}
             <li class="nav-item">
