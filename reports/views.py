@@ -38,6 +38,7 @@ def estab_rep(request):
         
         start = months.objects.filter(month_num=num).values_list('start', flat=True)
         finish = months.objects.filter(month_num=num).values_list('finsh', flat=True)
+        month_name= months.objects.filter(month_num=num)
         for day in dayVals:
            matrix = calendar.monthcalendar(year,month)
            num_days = sum(1 for x in matrix if x[day] != 0)
@@ -60,7 +61,7 @@ def estab_rep(request):
         c=a+b
         overtime=Overtime.objects.filter(Date__gte=start, Date__lte=finish).aggregate(Sum('hours')).get('hours__sum',0.00)
         total=a-b+overtime
-        return render(request,'estab_rep.html',{'result':result,'estab':estab,'unu':unu,'overtime':overtime,'total':total,'c':c})
+        return render(request,'estab_rep.html',{'result':result,'estab':estab,'unu':unu,'overtime':overtime,'total':total,'c':c,'month_name':month_name})
     
     return render(request,'estab_rep.html',{'monthly':monthly})
 

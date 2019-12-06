@@ -1,6 +1,6 @@
 {% extends 'base.html' %} {% block page_title %}Rota view{% endblock %} {% block page_heading %}{% endblock %} {% block content %}
 
-
+<div class='container-fluid'>
 
 <div class="row">
    <div class="col-md-3">
@@ -125,7 +125,7 @@
 
 
 
-<h1>Holiday</h1><button id='togg'>Show/Hide</button>
+<h1>Holiday</h1><button id='togg' class='btn-outline-secondary btn-sm"'>Show/Hide</button>
 
 <table class="table table-bordered table-dark">
   <thead>
@@ -153,4 +153,5 @@
 {% endfor %}
   </tbody>
 </table>
+</div>
  {% endblock %}

@@ -1,22 +1,22 @@
 {% extends 'base.html' %}{% load bootstrap_tags %} {% block page_title %}Rotas{% endblock %} {% block page_heading %}Home{% endblock %} {% block content %}
 
 <h1>{{ title }}</h1>
-
+<div class='col-sm-12 col-md-8 offset-md-2'>
 <div class="row">
     <div class="col-sm10 offset-sm-1">
        
     </div>
 </div>
 <div class="row">
-    <form method='POST'>
-        <input type='date' name='start'/>
+    <form method='POST' class='form-group'>
+        <input type='date' name='start' />
         <input type='date' name='finish'/>
         {% csrf_token %} 
-        <button type='submit'>Submit</button>
+        <button type='submit' class='btn btn-secondary btn-sm'>Submit</button>
     </form>
 </div>
 <div class="row">
-    <table class="table">
+    <table class="table table-hover">
   <thead>
     <tr>
      
@@ -45,6 +45,7 @@
   </tbody>
 </table>
   <a href="{% url 'pdf'%}">Print PDF</a>
+</div>
 </div>
 {% endblock %}
 

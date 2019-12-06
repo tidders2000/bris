@@ -1,7 +1,8 @@
 {% extends 'base.html' %}{% load bootstrap_tags %} {% block page_title %}Rotas{% endblock %} {% block page_heading %}Home{% endblock %} {% block content %}
 
 <h1>{{ title }}</h1>
-<form method="POST">
+<div class='col-sm-12 col-md-4'>
+<form method="POST" class='form-inline'>
          <input type="text" class="form-control" list="list" name="month" class='input_filter'  placeholder="month" />
     
     <datalist id="list">
@@ -9,13 +10,14 @@
             <option value="{{month.month_num}}">
             <input='hidden' name='start' value={{month.start}}>
            {% endfor %}
-      </datalist><br>
+      </datalist>
         
-     <button type='submit'>Submit</button>
+     <button type='submit' class='btn btn-secondary btn-sm'>Submit</button>
       {% csrf_token %} 
 </form>
-<h1>November</h1>
-<table class="table">
+</div>
+<h1>{% for month in month_name %}{{month.month}}{% endfor%}</h1>
+<table class="table table-borderless">
   <thead>
     <tr>
       <th scope="col">Type</th>
