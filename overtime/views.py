@@ -15,10 +15,11 @@ def overtime(request):
         current_user = request.user.pk
         approver=request.POST.get('appID')
         appmanagerun=request.POST.get('appmanager')    
-           
+        teaml= request.user.profile.team   
         if ot.is_valid():
             o=ot.save(commit=True)
             o.user=User(current_user)
+            o.team=teaml
             o.appmanager=approver
             o.appmanagerun=appmanagerun
             o.save()

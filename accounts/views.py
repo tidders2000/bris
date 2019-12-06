@@ -6,24 +6,28 @@ from accounts.forms import UserLoginForm, UserRegistrationForm
 from overtime.models import Overtime
 from estab.models import Establishment
 from leave.models import Leave
+from django.db.models import Sum
 
 @login_required
 def index(request):
     current_user = request.user.pk
+    teaml= request.user.profile.team
     otapprove=Overtime.objects.filter(appmanager=current_user,approved=False)
     alapprove=Leave.objects.filter(appmanager=current_user,approved=False)
     myhours=Establishment.objects.filter(user=current_user)
     myleave=Leave.objects.filter(user=current_user)
     myot=Overtime.objects.filter(user=current_user,approved=True)
+    myottotal=Overtime.objects.filter(user=current_user,approved=True).aggregate(Sum('hours')).get('hours__sum',0.00)
+    team_leave=Leave.objects.filter(team=teaml)
     if request.method=="POST":
         otapp=request.POST.get('otapp')
         ot_pk=request.POST.get('ot_pk')
         t = Overtime.objects.get(id=ot_pk)
         t.approved = otapp  
         t.save()
-        return render(request,'index.html', {'myot':myot,'otapprove':otapprove, 'alapprove':alapprove, 'myhours':myhours,'myleave':myleave})
+        return render(request,'index.html', {'myot':myot,'otapprove':otapprove, 'alapprove':alapprove, 'myhours':myhours,'myleave':myleave,'myottotal':myottotal,' team_leave':team_leave})
     else:
-     return render(request,'index.html', {'myot':myot,'otapprove':otapprove, 'alapprove':alapprove, 'myhours':myhours,'myleave':myleave})
+     return render(request,'index.html', {'myot':myot,'otapprove':otapprove, 'alapprove':alapprove, 'myhours':myhours,'myleave':myleave,'myottotal':myottotal,'team_leave':team_leave})
 
 @login_required
 def logout(request):

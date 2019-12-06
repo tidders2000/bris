@@ -3,20 +3,22 @@
 <div class="row">
 
     <div class="col-md-4">
-        <div class="data-circle">
-            info
+        <div class="data-circle"><i class="fas fa-calendar-check fa-2x"></i><br>
+            Leave Left<br>
+            {{user.profile.leave}} Hours
 
         </div>
 
     </div>
     <div class="col-md-4">
-        <div class="data-circle">
-            info
+        <div class="data-circle"><i class="fas fa-pound-sign fa-2x"></i><br>
+            Total O/T Hours<br>
+         {{myottotal}}
 
         </div>
     </div>
     <div class="col-md-4">
-        <div class="data-circle">
+        <div class="data-circle"><i class="fas fa-calendar-week fa-2x"></i><br>
             info
 
         </div>
@@ -180,6 +182,39 @@
 
     </div>
 </div>
+
+
+<div class="row">
+    <h1>Team Leave</h1>
 </div>
 
+<div class="row">
+
+
+    <table class="table table-bordered table-dark">
+        <thead>
+
+            <tr>
+
+
+                <th scope="col">Name</th>
+                <th scope="col">start</th>
+                <th scope="col">end</th>
+
+            </tr>
+        </thead>
+        <tbody>
+
+            {% for t in team_leave %}
+
+            <tr>
+                <td> {{t.user.first_name}} {{t.user.last_name}}</td>
+                <td> {{t.date_start}}</td>
+                <td> {{t.date_end}}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+</div>
 {% endblock %}

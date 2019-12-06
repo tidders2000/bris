@@ -38,6 +38,9 @@ nav{
 .container-fluid{
     margin-top:130px;
 }
+.nav-link {
+  color:white!important;
+}
 
 /*............................login..............................*/
 
@@ -58,12 +61,13 @@ nav{
 .data-circle{
       height: 200px;
   width: 200px;
-  background-color: #bbb;
+  background-color: #00ACB7;
   border-radius: 50%;
   display: block;
   margin: auto;
   text-align: center;
   padding-top: 70px;
+  box-shadow: 6px 6px 5px grey;
   
 }
 .approvals{

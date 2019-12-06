@@ -14,10 +14,12 @@ def leave(request):
             current_user = request.user.pk
             approver=request.POST.get('appID')
             test= leave_form(request.POST)
+            teaml= request.user.profile.team
             print(test)
             if le.is_valid():
                l=le.save(commit=False)
                l.user=User(current_user)
+               l.team=teaml
                l.appmanager=approver
                l.save()
                return render(request, 'leave.html',{'form':form, 'approver':approver}) 
