@@ -9,7 +9,11 @@ h1, h2, h3,h4, h5{
     font-family: 'Teko', sans-serif;
 }
 
-
+thead{
+  background-color: #5a5a5a;
+  color:white;
+  font-size: 16px;
+}
 /*............................General..............................*/
 table{
     text-align: center;
@@ -40,6 +44,7 @@ nav{
 }
 .nav-link {
   color:white!important;
+  font-size: 18px;
 }
 
 /*............................login..............................*/
@@ -68,12 +73,24 @@ nav{
   text-align: center;
   padding-top: 70px;
   box-shadow: 6px 6px 5px grey;
+  font-size: 18px;
+  color:#676767;
   
+}
+
+.dc-info{
+  color:white;
+  font-size: 18px;
+}
+
+.dc-text{
+  color:#5a5a5a;
 }
 .approvals{
    padding-left: 0!important;
    padding-right: 0!important;
 }
+
 
 /*............................Add Rota..............................*/
 

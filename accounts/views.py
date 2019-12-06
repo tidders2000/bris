@@ -15,6 +15,7 @@ def index(request):
     otapprove=Overtime.objects.filter(appmanager=current_user,approved=False)
     alapprove=Leave.objects.filter(appmanager=current_user,approved=False)
     myhours=Establishment.objects.filter(user=current_user)
+    hours_total=Establishment.objects.filter(user=current_user).aggregate(Sum('hours')).get('hours__sum',0.00)
     myleave=Leave.objects.filter(user=current_user)
     myot=Overtime.objects.filter(user=current_user,approved=True)
     myottotal=Overtime.objects.filter(user=current_user,approved=True).aggregate(Sum('hours')).get('hours__sum',0.00)
@@ -27,7 +28,7 @@ def index(request):
         t.save()
         return render(request,'index.html', {'myot':myot,'otapprove':otapprove, 'alapprove':alapprove, 'myhours':myhours,'myleave':myleave,'myottotal':myottotal,' team_leave':team_leave})
     else:
-     return render(request,'index.html', {'myot':myot,'otapprove':otapprove, 'alapprove':alapprove, 'myhours':myhours,'myleave':myleave,'myottotal':myottotal,'team_leave':team_leave})
+     return render(request,'index.html', {'myot':myot,'otapprove':otapprove, 'alapprove':alapprove, 'myhours':myhours,'myleave':myleave,'myottotal':myottotal,'team_leave':team_leave, 'hours_total':hours_total})
 
 @login_required
 def logout(request):
