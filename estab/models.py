@@ -15,7 +15,7 @@ class Establishment (models.Model):
     shift_end = models.TimeField(auto_now=False)
     day = models.CharField(max_length=254, choices=days)
     hours = models.DecimalField(max_digits=3, decimal_places=1,)
-    info = models.TextField(default='')
+    info = models.TextField(blank=True)
     username=models.CharField(max_length=254, default='unallocated')
     user = models.ForeignKey(User, null=True,on_delete=models.CASCADE)
     width = models.CharField(max_length=254, default='20')
