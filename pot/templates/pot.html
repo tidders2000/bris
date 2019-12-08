@@ -1,0 +1,23 @@
+{% extends 'base.html' %}{% load bootstrap_tags %} {% block page_title %}Rotas{% endblock %} {% block page_heading %}Home{% endblock %}
+  {% block content %}
+  <h1>Manage Pot</h1>
+  
+  <div class='col-sm-12 col-md-6 offset-md-3'>
+    <form method="POST" id="ot">
+    {{ form | as_bootstrap }}
+
+
+    <input type="text" class="form-control" list="list" name="appmanager" class='input_filter' placeholder="Approver" />
+    
+    <datalist id="list">
+      {% for approve in approver %}
+            <option value="{{ approve.username }}">
+             <input type="hidden" name="appID" value="{{approve.pk}}">
+           {% endfor %}
+      </datalist><br>
+       {% csrf_token %}
+    <button type='submit' class="btn btn-secondary">Submit</button>
+</form>
+  </div>  
+  {% endblock %}
+  

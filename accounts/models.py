@@ -8,6 +8,7 @@ class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     team=models.CharField(max_length=254, choices=teams)
     leave = models.DecimalField(max_digits=3, decimal_places=1,)
+    pot = models.DecimalField(max_digits=2, decimal_places=1,)
 
 @receiver(post_save, sender=User)
 def create_user_profile(sender, instance, created, **kwargs):

@@ -20,6 +20,7 @@ from rota import urls as urls_rota
 from overtime import urls as urls_overtime
 from leave import urls as urls_leave
 from reports import urls as urls_reports
+from pot import urls as urls_pot
 
 from accounts import urls as urls_accounts
 
@@ -32,4 +33,6 @@ urlpatterns = [
     url(r'^overtime/', include(urls_overtime)),
     url(r'^leave/', include(urls_leave)),
     url(r'^reports/', include(urls_reports)),
+    url(r'^pot/', include(urls_pot)),
+   
 ]

@@ -45,6 +45,8 @@ INSTALLED_APPS = [
     'leave',
     'overtime',
     'reports',
+    'hols',
+    'pot'
     ]
 
 
