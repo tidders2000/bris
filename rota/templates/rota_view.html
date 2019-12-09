@@ -75,12 +75,21 @@
 
         {% endfor %}
         {% for p in pot %}
+        {% if p.worked == 'pluspot' %}
         <div class="col-md-4 rota_graph " style="margin-left:{{p.width}}cm;">
             <svg width="{{p.hours}}cm " height="30">
   <rect width="{{p.hours}}cm " height="30 " style="fill:rgb(127,255,0);stroke-width:3;stroke:rgb(0,0,0) " data-toggle="popover" title="{{p.user.first_name}} {{p.user.last_name}}" data-content="{{p.pot_start}}-{{p.pot_end}}"/>
 </svg>
 
         </div>
+        {% else %}
+            <div class="col-md-4 rota_graph " style="margin-left:{{p.width}}cm;">
+            <svg width="{{p.hours}}cm " height="30">
+  <rect width="{{p.hours}}cm " height="30 " style="fill:rgb(220,20,60);stroke-width:3;stroke:rgb(0,0,0) " data-toggle="popover" title="{{p.user.first_name}} {{p.user.last_name}}" data-content="{{p.pot_start}}-{{p.pot_end}}"/>
+</svg>
+
+        </div>
+        {% endif %}
 
         {% endfor %}
     </div>
