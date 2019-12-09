@@ -17,9 +17,9 @@ def index(request):
     myhours=Establishment.objects.filter(user=current_user)
     hours_total=Establishment.objects.filter(user=current_user).aggregate(Sum('hours')).get('hours__sum',0.00)
     myleave=Leave.objects.filter(user=current_user)
-    myot=Overtime.objects.filter(user=current_user,approved=True)
+    myot=Overtime.objects.filter(user=current_user,approved=True).order_by('Date')
     myottotal=Overtime.objects.filter(user=current_user,approved=True).aggregate(Sum('hours')).get('hours__sum',0.00)
-    team_leave=Leave.objects.filter(team=teaml)
+    team_leave=Leave.objects.filter(team=teaml).order_by('date_start')
     if request.method=="POST":
         otapp=request.POST.get('otapp')
         ot_pk=request.POST.get('ot_pk')
