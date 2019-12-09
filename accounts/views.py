@@ -20,6 +20,7 @@ def index(request):
     myot=Overtime.objects.filter(user=current_user,approved=True).order_by('Date')
     myottotal=Overtime.objects.filter(user=current_user,approved=True).aggregate(Sum('hours')).get('hours__sum',0.00)
     team_leave=Leave.objects.filter(team=teaml).order_by('date_start')
+    pot=request.user.profile.pot
     if request.method=="POST":
         otapp=request.POST.get('otapp')
         ot_pk=request.POST.get('ot_pk')
@@ -28,7 +29,7 @@ def index(request):
         t.save()
         return render(request,'index.html', {'myot':myot,'otapprove':otapprove, 'alapprove':alapprove, 'myhours':myhours,'myleave':myleave,'myottotal':myottotal,' team_leave':team_leave})
     else:
-     return render(request,'index.html', {'myot':myot,'otapprove':otapprove, 'alapprove':alapprove, 'myhours':myhours,'myleave':myleave,'myottotal':myottotal,'team_leave':team_leave, 'hours_total':hours_total})
+     return render(request,'index.html', {'myot':myot,'otapprove':otapprove, 'alapprove':alapprove, 'myhours':myhours,'myleave':myleave,'myottotal':myottotal,'team_leave':team_leave, 'hours_total':hours_total,'pot':pot})
 
 @login_required
 def logout(request):
