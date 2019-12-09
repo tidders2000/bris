@@ -46,7 +46,8 @@ INSTALLED_APPS = [
     'overtime',
     'reports',
     'hols',
-    'pot'
+    'pot',
+    'bootstrapform',
     ]
 
 
