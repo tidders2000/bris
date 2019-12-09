@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 # Create your models here.
 location=[('bingham','bingham'),('cropwell','cropwell'),('cotgrave','cotgrave')]
 teams=[('nurseing','nursing'),('hca','hca'),('admin','admin')]
-worked=[('Worked Extra','Worked Extra'),('Time Off','Time Off')]
+worked=[('pluspot','pluspot'),('minuspot','minuspot')]
 class Pot(models.Model):
     user = models.ForeignKey(User, null=True,on_delete=models.CASCADE)
     team=models.CharField(max_length=254, choices=teams)

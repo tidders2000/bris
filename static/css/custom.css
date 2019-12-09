@@ -117,6 +117,16 @@ nav{
 .ot_col{
  color:#FF7F50;
 }
+.pluspot{
+  color:green;
+  fill:rgb(127,255,0);
+
+}
+.minuspot{
+   color:red;
+   fill:rgb(127,255,0);
+   
+}
 .date_buttons{
   color:white;
   background-color: #2C6CB5;

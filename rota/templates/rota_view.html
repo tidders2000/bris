@@ -74,6 +74,15 @@
         </div>
 
         {% endfor %}
+        {% for p in pot %}
+        <div class="col-md-4 rota_graph " style="margin-left:{{p.width}}cm;">
+            <svg width="{{p.hours}}cm " height="30">
+  <rect width="{{p.hours}}cm " height="30 " style="fill:rgb(127,255,0);stroke-width:3;stroke:rgb(0,0,0) " data-toggle="popover" title="{{p.user.first_name}} {{p.user.last_name}}" data-content="{{p.pot_start}}-{{p.pot_end}}"/>
+</svg>
+
+        </div>
+
+        {% endfor %}
     </div>
 
 
@@ -111,6 +120,20 @@
                     <td>{{over.shift_start}}</td>
                     <td>{{over.shift_end}}</td>
                     <td>{{over.location}}</td>
+                    {% endfor %}
+                </tr>
+                <tr>
+                    <td><b>Pot Hours</b> </td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                {% for p in pot %}
+                <tr class='{{p.worked}}'>
+                    <td> {{p.user.first_name}} {{p.user.last_name}}</td>
+                    <td>{{p.pot_start}}</td>
+                    <td>{{p.pot_end}}</td>
+                    <td>{{p.worked}}</td>
                     {% endfor %}
                 </tr>
             </tbody>

@@ -28,7 +28,15 @@ def pot(request):
         width= int(slice2)-8
         hours=request.POST.get('hours')
         hour_int=int(hours)
-        new_hours= pot_hours+hour_int
+        if  request.POST.get('worked')=='pluspot':
+            new_hours= pot_hours+hour_int
+        
+        else:
+            neg='-'+hours
+            new_hours= pot_hours+int(neg)
+            
+        
+        
         Profile.objects.filter(user=current_user).update(pot=new_hours)
         
         
