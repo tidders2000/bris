@@ -7,6 +7,8 @@ from overtime.models import Overtime
 from estab.models import Establishment
 from leave.models import Leave
 from django.db.models import Sum
+from absence.models import Absence
+
 
 @login_required
 def index(request):
@@ -18,9 +20,11 @@ def index(request):
     hours_total=Establishment.objects.filter(user=current_user).aggregate(Sum('hours')).get('hours__sum',0.00)
     myleave=Leave.objects.filter(user=current_user)
     myot=Overtime.objects.filter(user=current_user,approved=True).order_by('Date')
+    absence=Absence.objects.filter(absence_end__isnull=True)
     myottotal=Overtime.objects.filter(user=current_user,approved=True).aggregate(Sum('hours')).get('hours__sum',0.00)
     team_leave=Leave.objects.filter(team=teaml).order_by('date_start')
     pot=request.user.profile.pot
+    
     if request.method=="POST":
         otapp=request.POST.get('otapp')
         ot_pk=request.POST.get('ot_pk')
@@ -29,7 +33,7 @@ def index(request):
         t.save()
         return render(request,'index.html', {'myot':myot,'otapprove':otapprove, 'alapprove':alapprove, 'myhours':myhours,'myleave':myleave,'myottotal':myottotal,' team_leave':team_leave})
     else:
-     return render(request,'index.html', {'myot':myot,'otapprove':otapprove, 'alapprove':alapprove, 'myhours':myhours,'myleave':myleave,'myottotal':myottotal,'team_leave':team_leave, 'hours_total':hours_total,'pot':pot})
+     return render(request,'index.html', {'absence':absence,'myot':myot,'otapprove':otapprove, 'alapprove':alapprove, 'myhours':myhours,'myleave':myleave,'myottotal':myottotal,'team_leave':team_leave, 'hours_total':hours_total,'pot':pot})
 
 @login_required
 def logout(request):

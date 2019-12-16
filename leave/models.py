@@ -12,3 +12,5 @@ class Leave(models.Model):
     approved = models.BooleanField(default=False)
     days= models.CharField(max_length=254)
     appmanager = models.CharField(max_length=254, null=True, default='approver')
+    def __str__(self):
+        return self.user

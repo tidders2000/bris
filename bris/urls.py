@@ -21,7 +21,7 @@ from overtime import urls as urls_overtime
 from leave import urls as urls_leave
 from reports import urls as urls_reports
 from pot import urls as urls_pot
-
+from absence import urls as urls_absence
 from accounts import urls as urls_accounts
 
 
@@ -34,5 +34,6 @@ urlpatterns = [
     url(r'^leave/', include(urls_leave)),
     url(r'^reports/', include(urls_reports)),
     url(r'^pot/', include(urls_pot)),
+    url(r'^absence/', include(urls_absence)),
    
 ]

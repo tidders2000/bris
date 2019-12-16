@@ -24,6 +24,27 @@
         </div>
 
     </div>
+    
+    <div class="row">
+        
+        <h1>Absent Staff</h1>
+    </div>
+    <div class="row">
+        
+        <div class="col-12-sm col-md-6 offset-md-3">
+            
+{% for a in absence %}
+ {% if user.profile.team == a.user.profile.team %}
+ 
+  <div class='staff_ab_text'>{{a.user.first_name}} {{a.user.last_name}}  {{a.absence_start}} <a class="btn btn-default" href="/absence/edit/{{a.id}}/"><span>Complete RTW</span></a> </div>
+ 
+ {% endif %}
+
+{% endfor %}
+
+
+        </div>
+    </div>
 
     <div class="row">
         <h1>My Hours</h1>
@@ -218,4 +239,13 @@
         </div>
     </div>
 </div>
+
+
+
+
+
+
+
+
+
 {% endblock %}
