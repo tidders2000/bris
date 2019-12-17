@@ -1,0 +1,60 @@
+{% extends 'base.html' %}{% load bootstrap_tags %} {% block page_title %}Rotas{% endblock %} {% block page_heading %}Home{% endblock %} {% block content %}
+
+<h1>{{ title }}</h1>
+<div class='col-sm-12 col-md-8 offset-md-2'>
+<div class="row">
+    <div class="col-sm10 offset-sm-1">
+       
+    </div>
+</div>
+<div class="row">
+    <form method='POST' class='form-group'>
+        <input type='date' name='start' />
+        
+        {% csrf_token %} 
+        <button type='submit' class='btn btn-secondary btn-sm'>Submit</button>
+    </form>
+</div>
+<div class="row">
+    <table class="table table-hover">
+  <thead>
+    <tr>
+     
+      <th scope="col">Name</th>
+      <th scope="col">Absence Start</th>
+      <th scope="col">Absence Finish</th>
+      <th scope="col">Days</th>
+    
+    </tr>
+  </thead>
+  <tbody>
+       {% for a in absence %}
+    <tr>
+     
+      <td>{{a.user.first_name}} {{a.user.last_name}} </td>
+      <td>{{a.absence_start}}</td>
+      <td>{{a.absence_end}}</td>
+      <td>{{a.days}} </td>
+      
+    </tr>
+    {% endfor %}
+    
+         {% for a in absenceAll %}
+    <tr>
+     
+      <td>{{a.user.first_name}} {{a.user.last_name}} </td>
+      <td>{{a.absence_start}}</td>
+      <td>{{a.absence_end}}</td>
+      <td>{{a.days}} </td>
+      
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+  <a href="{% url 'pdf'%}">Print PDF</a>
+</div>
+</div>
+{% endblock %}
+
+   
+    

@@ -36,7 +36,7 @@
 {% for a in absence %}
  {% if user.profile.team == a.user.profile.team %}
  
-  <div class='staff_ab_text'>{{a.user.first_name}} {{a.user.last_name}}  {{a.absence_start}} <a class="btn btn-default" href="/absence/edit/{{a.id}}/"><span>Complete RTW</span></a> </div>
+  <div class='staff_ab_text'>{{a.user.first_name}} {{a.user.last_name}}  {{a.absence_start}} <a class="btn btn-default" href="/absence/edit/{{a.id}}/"><span class='abs_butt'>Complete RTW</span></a> </div>
  
  {% endif %}
 

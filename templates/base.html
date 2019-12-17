@@ -50,8 +50,14 @@
                <li class="nav-item">
                 <a class="nav-link" href="{% url 'estab_rep' %}">Establishment Report</a>
             </li>
+               <li class="nav-item">
+                <a class="nav-link" href="{% url 'absence_rep' %}">Absence Report</a>
+            </li>
             {% endif %}
-              </li>
+               <li class="nav-item">
+                <a class="nav-link" href="{% url 'teamabs_rep' %}">Check Absence History</a>
+            </li>
+              
                <li class="nav-item">
                 <a class="nav-link" href="{% url 'absence' %}">Absence</a>
             </li>

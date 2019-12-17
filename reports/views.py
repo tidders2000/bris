@@ -2,13 +2,52 @@ from django.shortcuts import render, HttpResponse
 from django.views.generic import View
 from overtime.models import Overtime
 from estab.models import Establishment
+from absence.models import Absence
 import calendar
 from django.db.models import Sum
 import datetime
+from django.contrib.auth.models import User
+from accounts.models import Profile
+
 from .models import months
 from .utils import render_to_pdf
 def reports(request):
     return render(request,'reports.html')
+
+def teamabs_rep(request):
+     teaml= request.user.profile.team
+     staffs=Profile.objects.filter(team=teaml)
+    
+     if request.method =='POST':
+         id=request.POST.get('username')
+         staffab=Absence.objects.filter(user=id)
+         return render(request,'teamabs_rep.html', {'staffs':staffs, 'staffab':staffab})
+     else:
+      return render(request,'teamabs_rep.html', {'staffs':staffs})
+
+def absence_rep(request):
+    title='Absence Report'
+    if request.method=="POST":
+        start=request.POST.get('start')
+       
+        absence=Absence.objects.filter(absence_start__gte=start)
+        absenceAll=Absence.objects.filter(absence_end__isnull=True)
+        for abse in absenceAll:
+            user=abse.user
+            now = datetime.datetime.now().date()- abse.absence_start
+            dw=Establishment.objects.filter(user=user).count()
+            
+            shifts_m=now/7*dw
+          
+            t = Absence.objects.get(id=abse.id)
+            t.days = shifts_m  
+            t.save()
+        return render(request,'absence_rep.html',{'absence':absence, 'title':title,'absenceAll':absenceAll})
+    
+    return render(request,'absence_rep.html',{'title':title})
+
+
+
 
 def overtime_rep(request):
     title='Overtime Report'

@@ -91,8 +91,11 @@ nav{
    padding-right: 0!important;
 }
 
+.abs_butt{
+  background-color: red;
+}
 .staff_ab_text{
-  font-size: 20px;
+  font-size: 15px;
 }
 /*............................Add Rota..............................*/
 

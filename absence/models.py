@@ -16,6 +16,6 @@ class Absence(models.Model):
     gp_consult = models.BooleanField(default=False)
     further_support = models.TextField(null=True,blank=True)
     days= models.CharField(max_length=254,default=0)
-    reason = models.ManyToManyField(Reason)
+    reason = models.ManyToManyField(Reason,null=True,blank=True)
     
         
