@@ -24,13 +24,13 @@
         </div>
 
     </div>
-    
+     {% if perms.absence.change_reason %} 
     <div class="row">
         
         <h1>Absent Staff</h1>
     </div>
     <div class="row">
-        
+       
         <div class="col-12-sm col-md-6 offset-md-3">
             
 {% for a in absence %}
@@ -45,7 +45,7 @@
 
         </div>
     </div>
-
+{% endif %}
     <div class="row">
         <h1>My Hours</h1>
     </div>

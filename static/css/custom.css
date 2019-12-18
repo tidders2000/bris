@@ -63,6 +63,12 @@ nav{
 }
 
 /*............................index..............................*/
+
+.dropdown-menu{
+  padding-left: 15px;
+  width:300px;
+  background-color: #359CAB;
+}
 .data-circle{
       height: 200px;
   width: 200px;
