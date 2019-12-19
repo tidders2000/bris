@@ -12,3 +12,7 @@ class overtime_form(forms.ModelForm):
         widget=forms.DateInput(format='%d/%m/%Y', attrs={'class': 'datepicker'}),
         input_formats=('%d/%m/%Y', )
         )
+class status_form(forms.ModelForm):
+    class Meta:
+        model = Overtime
+        fields =( 'status',)

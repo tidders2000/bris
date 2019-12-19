@@ -1,4 +1,4 @@
-{% extends 'base.html' %} {% block page_title %}Home Page{% endblock %} {% block page_heading %}Home{% endblock %} {% block content %}
+{% extends 'base.html' %}{% load bootstrap_tags %} {% block page_title %}Home Page{% endblock %} {% block page_heading %}Home{% endblock %} {% block content %}
 <div class="container-fluid">
     <div class="row">
 
@@ -19,33 +19,30 @@
         <div class="col-md-4">
             <div class="data-circle"><i class="fas fa-calendar-week fa-2x"></i><br>
                 <span class='dc-info'>POT</span><br>
-                      <span class='dc-text'>{{pot}} Hours</span>
+                <span class='dc-text'>{{pot}} Hours</span>
             </div>
         </div>
 
     </div>
-     {% if perms.absence.change_reason %} 
+    {% if perms.absence.change_reason %}
     <div class="row">
-        
+
         <h1>Absent Staff</h1>
     </div>
     <div class="row">
-       
-        <div class="col-12-sm col-md-6 offset-md-3">
-            
-{% for a in absence %}
- {% if user.profile.team == a.user.profile.team %}
- 
-  <div class='staff_ab_text'>{{a.user.first_name}} {{a.user.last_name}}  {{a.absence_start}} <a class="btn btn-default" href="/absence/edit/{{a.id}}/"><span class='abs_butt'>Complete RTW</span></a> </div>
- 
- {% endif %}
 
-{% endfor %}
+        <div class="col-12-sm col-md-6 offset-md-3">
+
+            {% for a in absence %} {% if user.profile.team == a.user.profile.team %}
+
+            <div class='staff_ab_text'>{{a.user.first_name}} {{a.user.last_name}} {{a.absence_start}} <a class="btn btn-default" href="/absence/edit/{{a.id}}/"><span class='abs_butt'>Complete RTW</span></a> </div>
+
+            {% endif %} {% endfor %}
 
 
         </div>
     </div>
-{% endif %}
+    {% endif %}
     <div class="row">
         <h1>My Hours</h1>
     </div>
@@ -94,7 +91,7 @@
 
                         <th scope="col">Date</th>
                         <th scope="col">Hours</th>
-                        <th scope="col">Approved</th>
+                        <th scope="col">Status</th>
 
                     </tr>
                 </thead>
@@ -105,7 +102,7 @@
                     <tr>
                         <td> {{over.Date}}</td>
                         <td> {{over.hours}}</td>
-                        <td> {{over.approved}}</td>
+                        <td> {{over.status}}</td>
                     </tr>
                     {% endfor %}
                 </tbody>
@@ -176,12 +173,20 @@
                         <td>
                             <form method='POST'>
                                 <div class="form-group form-check">
-                                    <input type="checkbox" class="form-check-input" id="ot" name='otapp' value="True">
+                                   
                                     <input type="hidden" name="ot_pk" value="{{ot.pk}}" />
-                                    <label class="form-check-label" for="exampleCheck1">Approve</label> {% csrf_token %}
+                                    {% csrf_token %}
+                                     {{ status | as_bootstrap }}
+                                   
                                 </div><button type="submit" class="btn btn-outline-secondary">Approve</button></form>
                         </td>
                         {% endfor %}
+                    </tr>
+                    <tr>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
                     </tr>
                     {% for al in alapprove %}
                     <tr>
