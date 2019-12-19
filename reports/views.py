@@ -5,7 +5,9 @@ from estab.models import Establishment
 from absence.models import Absence
 import calendar
 from django.db.models import Sum
-import datetime
+from datetime import datetime
+from datetime import date
+
 from django.contrib.auth.models import User
 from accounts.models import Profile
 
@@ -34,15 +36,16 @@ def absence_rep(request):
         absenceAll=Absence.objects.filter(absence_end__isnull=True)
         for abse in absenceAll:
             user=abse.user
-            now = datetime.datetime.now().date()- abse.absence_start
+           
+            today=date.today()
+            now = (today - abse.absence_start).days
+            new=round(now)
             dw=Establishment.objects.filter(user=user).count()
-            
-            shifts_m=now/7*dw
-          
+            shifts_m=round(new/7*dw)
             t = Absence.objects.get(id=abse.id)
             t.days = shifts_m  
             t.save()
-        return render(request,'absence_rep.html',{'absence':absence, 'title':title,'absenceAll':absenceAll})
+        return render(request,'absence_rep.html',{'new':new,'today':today,'absence':absence, 'title':title,'absenceAll':absenceAll})
     
     return render(request,'absence_rep.html',{'title':title})
 

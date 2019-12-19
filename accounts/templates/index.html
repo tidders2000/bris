@@ -146,7 +146,7 @@
         </div>
     </div>
 
-
+{% if perms.absence.change_reason %}
     <div class="row">
         <h1>My Approvals</h1>
         <div class="col-sm-10 offset-sm-1 approvals">
@@ -155,20 +155,21 @@
                     <tr>
 
                         <th scope="col">Name</th>
-                        <th scope="col">Start</th>
-                        <th scope="col">Finish</th>
+                        <th scope="col">Times</th>
+                        <th scope="col">Date</th>
                         <th scope="col">Location</th>
                         <th scope="col">Approve</th>
 
                     </tr>
                 </thead>
                 <tbody>
-
+              
                     {% for ot in otapprove %}
                     <tr>
                         <td> {{ot.user.first_name}} {{over.user.last_name}}</td>
-                        <td>{{ot.shift_start}}</td>
-                        <td>{{ot.shift_end}}</td>
+                        
+                        <td>{{ot.shift_start}}-{{ot.shift_end}}</td>
+                        <td>{{ot.Date}}</td>
                         <td>{{ot.location}}</td>
                         <td>
                             <form method='POST'>
@@ -182,18 +183,25 @@
                         </td>
                         {% endfor %}
                     </tr>
+                   
+                 
+                      <thead class="">
                     <tr>
-                        <td></td>
+
+                        <th scope="col">Name</th>
+                        <th scope="col">start</th>
+                        <th scope="col">end</th>
+                        <th scope="col">Approve</th>
+                        <th></th>
+
                     </tr>
-                    <tr>
-                        <td></td>
-                    </tr>
+                </thead>
                     {% for al in alapprove %}
                     <tr>
                         <td> {{al.user.first_name}} {{al.user.last_name}}</td>
                         <td>{{al.date_start}}</td>
                         <td>{{al.date_end}}</td>
-                        <td>{{al.location}}</td>
+                        
                         <td>
                             <form>
                                 <div class="form-group form-check" method='POST'>
@@ -201,7 +209,9 @@
                                     <label class="form-check-label" for="exampleCheck1">Approve</label>
                                 </div><button type="submit" class="btn btn-outline-secondary">Approve</button></form>
                         </td>
+                        <td></td>
                         {% endfor %}
+                     
                     </tr>
                 </tbody>
             </table>
@@ -209,7 +219,7 @@
         </div>
     </div>
 
-
+  {% endif %}
     <div class="row">
         <h1>Team Leave</h1>
     </div>

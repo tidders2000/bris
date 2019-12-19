@@ -71,7 +71,7 @@ def rota_view(request):
         day=findDay(dd)
         team=request.POST.get('team')
         selection=Establishment.objects.filter(day=day).filter(team=team).order_by('location')
-        overtime=Overtime.objects.filter(Date=value).filter(team=team).exclude(status='declined')
+        overtime=Overtime.objects.filter(Date=value).filter(team=team).exclude(status='Declined')
         pot=Pot.objects.filter(Date=value).filter(team=team)
         
         

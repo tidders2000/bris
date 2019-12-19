@@ -15,14 +15,14 @@ from overtime.forms import status_form
 def index(request):
     current_user = request.user.pk
     teaml= request.user.profile.team
-    otapprove=Overtime.objects.filter(appmanager=current_user).filter(status='unactioned')
+    otapprove=Overtime.objects.filter(appmanager=current_user).filter(status='Unactioned')
     alapprove=Leave.objects.filter(appmanager=current_user,approved=False)
     myhours=Establishment.objects.filter(user=current_user)
     hours_total=Establishment.objects.filter(user=current_user).aggregate(Sum('hours')).get('hours__sum',0.00)
     myleave=Leave.objects.filter(user=current_user)
     myot=Overtime.objects.filter(user=current_user).order_by('Date')
     absence=Absence.objects.filter(absence_end__isnull=True)
-    myottotal=Overtime.objects.filter(user=current_user).exclude(status='declined').aggregate(Sum('hours')).get('hours__sum',0.00)
+    myottotal=Overtime.objects.filter(user=current_user).exclude(status='Declined').aggregate(Sum('hours')).get('hours__sum',0.00)
     team_leave=Leave.objects.filter(team=teaml).order_by('date_start')
     pot=request.user.profile.pot
     status=status_form()

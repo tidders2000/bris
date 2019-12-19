@@ -5,7 +5,7 @@ from .models import Overtime
 class overtime_form(forms.ModelForm):
     class Meta:
          model = Overtime
-         fields = ( 'location', 'Date','shift_start','shift_end', 'hours')
+         fields = ( 'location', 'Date','shift_start','shift_end', 'hours','ot_type','ot_reason')
          
          
     Date = forms.DateField(
