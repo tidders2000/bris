@@ -126,6 +126,7 @@
                         <th scope="col">Start</th>
                         <th scope="col">End</th>
                         <th scope="col">Days</th>
+                        <th scope='col'>Approved</th>
 
                     </tr>
                 </thead>
@@ -139,6 +140,7 @@
                         <td> {{leave.date_start}}</td>
                         <td> {{leave.date_end}}</td>
                         <td> {{leave.days}}</td>
+                        <td> {{leave.status}}</td>
                     </tr>
                     {% endfor %}
                 </tbody>
@@ -148,7 +150,7 @@
 
 {% if perms.absence.change_reason %}
     <div class="row">
-        <h1>My Approvals</h1>
+        <h1>My Approvals{{at}}</h1>
         <div class="col-sm-10 offset-sm-1 approvals">
             <table class="table table-bordered table-hover rota_tab">
                 <thead class="">
@@ -179,7 +181,7 @@
                                     {% csrf_token %}
                                      {{ status | as_bootstrap }}
                                    
-                                </div><button type="submit" class="btn btn-outline-secondary">Approve</button></form>
+                                </div><button type="submit" name='otbutt' class="btn btn-outline-secondary">Approve</button></form>
                         </td>
                         {% endfor %}
                     </tr>
@@ -191,8 +193,9 @@
                         <th scope="col">Name</th>
                         <th scope="col">start</th>
                         <th scope="col">end</th>
+                         <th scope="col">Days</th>
                         <th scope="col">Approve</th>
-                        <th></th>
+                        
 
                     </tr>
                 </thead>
@@ -201,15 +204,18 @@
                         <td> {{al.user.first_name}} {{al.user.last_name}}</td>
                         <td>{{al.date_start}}</td>
                         <td>{{al.date_end}}</td>
+                        <td>{{al.days}}</td>
                         
                         <td>
-                            <form>
-                                <div class="form-group form-check" method='POST'>
-                                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                                    <label class="form-check-label" for="exampleCheck1">Approve</label>
-                                </div><button type="submit" class="btn btn-outline-secondary">Approve</button></form>
+                            <form method='POST'>
+                                <div class="form-group form-check">
+                                   
+                                    <input type="hidden" name="al_pk" value="{{al.pk}}" />
+                                    {% csrf_token %}
+                                     {{ status | as_bootstrap }}
+                                   
+                                </div><button type="submit" name='albutt' class="btn btn-outline-secondary">Approve</button></form>
                         </td>
-                        <td></td>
                         {% endfor %}
                      
                     </tr>
@@ -247,6 +253,7 @@
                         <td> {{t.user.first_name}} {{t.user.last_name}}</td>
                         <td> {{t.date_start}}</td>
                         <td> {{t.date_end}}</td>
+                        
                     </tr>
                     {% endfor %}
                 </tbody>

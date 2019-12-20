@@ -19,5 +19,4 @@ class Overtime(models.Model):
     appmanager = models.CharField(max_length=254, null=True)
     appmanagerun = models.CharField(max_length=254, null=True)
     width = models.CharField(max_length=254, default='20')
-    def __str__(self):
-        return self.user
+    

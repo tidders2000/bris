@@ -9,6 +9,7 @@ from leave.models import Leave
 from django.db.models import Sum
 from absence.models import Absence
 from overtime.forms import status_form
+from leave.forms import status_form_leave
 
 
 @login_required
@@ -16,26 +17,36 @@ def index(request):
     current_user = request.user.pk
     teaml= request.user.profile.team
     otapprove=Overtime.objects.filter(appmanager=current_user).filter(status='Unactioned')
-    alapprove=Leave.objects.filter(appmanager=current_user,approved=False)
+    alapprove=Leave.objects.filter(appmanager=current_user).filter(status='Unactioned')
     myhours=Establishment.objects.filter(user=current_user)
     hours_total=Establishment.objects.filter(user=current_user).aggregate(Sum('hours')).get('hours__sum',0.00)
     myleave=Leave.objects.filter(user=current_user)
     myot=Overtime.objects.filter(user=current_user).order_by('Date')
     absence=Absence.objects.filter(absence_end__isnull=True)
     myottotal=Overtime.objects.filter(user=current_user).exclude(status='Declined').aggregate(Sum('hours')).get('hours__sum',0.00)
-    team_leave=Leave.objects.filter(team=teaml).order_by('date_start')
+    team_leave=Leave.objects.filter(team=teaml).exclude(status='Declined').order_by('date_start')
     pot=request.user.profile.pot
     status=status_form()
+    lestat=status_form_leave()
     if request.method=="POST":
-        ot = status_form(request.POST)
-        nv = ot['status'].value()
-        ot_pk=request.POST.get('ot_pk')
-        t = Overtime.objects.get(id=ot_pk)
-        t.status = nv  
-        t.save()
-        return render(request,'index.html', {'status':status,'myot':myot,'otapprove':otapprove, 'alapprove':alapprove, 'myhours':myhours,'myleave':myleave,'myottotal':myottotal,' team_leave':team_leave})
+         if 'otbutt' in request.POST:
+        
+            ot = status_form(request.POST)
+            nv = ot['status'].value()
+            ot_pk=request.POST.get('ot_pk')
+            t = Overtime.objects.get(id=ot_pk)
+            t.status = nv  
+            t.save()
+         elif 'albutt' in request.POST:
+            ot = status_form_leave(request.POST)
+            nv = ot['status'].value()
+            ot_pk=request.POST.get('al_pk')
+            t = Leave.objects.get(id=ot_pk)
+            t.status = nv  
+            t.save()
+         return render(request,'index.html', {'lestat':lestat,'status':status,'myot':myot,'otapprove':otapprove, 'alapprove':alapprove, 'myhours':myhours,'myleave':myleave,'myottotal':myottotal,' team_leave':team_leave})
     else:
-     return render(request,'index.html', {'status':status,'absence':absence,'myot':myot,'otapprove':otapprove, 'alapprove':alapprove, 'myhours':myhours,'myleave':myleave,'myottotal':myottotal,'team_leave':team_leave, 'hours_total':hours_total,'pot':pot})
+     return render(request,'index.html', {'lestat':lestat,'status':status,'absence':absence,'myot':myot,'otapprove':otapprove, 'alapprove':alapprove, 'myhours':myhours,'myleave':myleave,'myottotal':myottotal,'team_leave':team_leave, 'hours_total':hours_total,'pot':pot})
 
 @login_required
 def logout(request):
