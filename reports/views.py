@@ -7,7 +7,7 @@ import calendar
 from django.db.models import Sum
 from datetime import datetime
 from datetime import date
-
+import calendar
 from django.contrib.auth.models import User
 from accounts.models import Profile
 
@@ -73,13 +73,19 @@ def estab_rep(request):
     
     if request.method=='POST':
         num = request.POST.get('month')
-        year = 2019
+        year = datetime.now().year
         month= int(num)
         days=['Monday','Tuesday','Wednesday','Thursday','Friday']
         dayVals=[1,2,3,4,5]
+        dt=calendar.monthrange(year,month)
+        star=str(year),"-",str(month),"-01"
+        end= str(year),"-",str(month),"-",str(dt[1])
+        start=''.join(star)
+        finish =  ''.join(end)
         
-        start = months.objects.filter(month_num=num).values_list('start', flat=True)
-        finish = months.objects.filter(month_num=num).values_list('finsh', flat=True)
+        
+        """start = months.objects.filter(month_num=num).values_list('start', flat=True)
+        finish = months.objects.filter(month_num=num).values_list('finsh', flat=True)"""
         month_name= months.objects.filter(month_num=num)
         for day in dayVals:
            matrix = calendar.monthcalendar(year,month)

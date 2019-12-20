@@ -4,6 +4,7 @@ from django.contrib.auth.models import User
 location=[('bingham','bingham'),('cropwell','cropwell'),('cotgrave','cotgrave')]
 teams=[('nurseing','nursing'),('hca','hca'),('admin','admin')]
 status=[('Unactioned','Unactioned'),('Declined','Declined'),('Approved','Approved')]
+
 class Leave(models.Model):
     user = models.ForeignKey(User, null=True,on_delete=models.CASCADE)
     team=models.CharField(max_length=254, choices=teams)
