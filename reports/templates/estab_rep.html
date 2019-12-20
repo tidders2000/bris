@@ -7,8 +7,9 @@
     
     <datalist id="list">
       {% for month in monthly %}
-            <option value="{{month.month_num}}">
+            <option value="{{month.month_num}}">{{month.month}}</option>
             <input='hidden' name='start' value={{month.start}}>
+         
            {% endfor %}
       </datalist>
         

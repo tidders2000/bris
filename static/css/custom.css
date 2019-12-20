@@ -1,5 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Bitter|Teko&display=swap');
 
+
+
 body{
     font-family: 'Bitter', serif;
     font-size: 14px;
@@ -81,6 +83,7 @@ nav{
   box-shadow: 6px 6px 5px grey;
   font-size: 18px;
   color:#676767;
+  margin-bottom: 15px;
   
 }
 
@@ -107,6 +110,14 @@ nav{
 
 
 /*............................view Rota..............................*/
+
+
+
+
+.butt_float{
+  float:right;
+}
+
 .day{
   text-align: center;
 }
@@ -138,16 +149,30 @@ nav{
    fill:rgb(127,255,0);
    
 }
-.date_buttons{
-  color:white;
-  background-color: #2C6CB5;
+
+
+.search{
+  display:block;
+  margin:auto;
 }
 
-.date_buttons:hover{
-  color:black;
-  background-color: royalblue;
+.search_form{
+ 
+  padding-left:0;
   
 }
+
+.search_form form{
+ 
+ display: block;
+ margin:auto;
+  
+}
+.rota_div{
+  padding: 0;
+}
+
+
 .rota_tab{
     width:100%;
 }
@@ -156,60 +181,7 @@ nav{
   text-align: center;
 }
 
-togg{
+.togg{
   margin-bottom: 10px;
 }
 
-
-/* Style the form - display items horizontally */
-.form-inline {
-  display: inline-block;
-  flex-flow: row wrap;
-  align-items: center;
-  margin-left: auto;
-  padding-bottom: 10px;
-}
-
-/*lines up 1830*/
-.left_place{
-  padding-right: 0;
-}
-
-/* Add some margins for each label */
-.form-inline label {
-  margin: 5px 10px 5px 0;
-}
-
-/* Style the input fields */
-.form-inline input {
-  vertical-align: middle;
-  margin: 5px 10px 5px 0;
-  padding: 10px;
-  background-color: #fff;
-  border: 1px solid #ddd;
-}
-
-/* Style the submit button */
-.form-inline button {
-  padding: 10px 20px;
-  background-color: #2C6CB5;
-  border: 1px solid #ddd;
-  color: white;
-}
-/*
-.form-inline button:hover {
-  background-color: royalblue;
-}
-*/
-
-/* Add responsiveness - display the form controls vertically instead of horizontally on screens that are less than 800px wide */
-@media (max-width: 800px) {
-  .form-inline input {
-    margin: 10px 0;
-  }
-
-  .form-inline {
-    flex-direction: column;
-    align-items: stretch;
-  }
-}
