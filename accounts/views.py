@@ -8,8 +8,10 @@ from estab.models import Establishment
 from leave.models import Leave
 from django.db.models import Sum
 from absence.models import Absence
+from pot.models import Pot
 from overtime.forms import status_form
 from leave.forms import status_form_leave
+from pot.forms import status_form_pot
 
 
 @login_required
@@ -26,8 +28,11 @@ def index(request):
     myottotal=Overtime.objects.filter(user=current_user).exclude(status='Declined').aggregate(Sum('hours')).get('hours__sum',0.00)
     team_leave=Leave.objects.filter(team=teaml).exclude(status='Declined').order_by('date_start')
     pot=request.user.profile.pot
+    potapprove=Pot.objects.filter(appmanager=current_user).filter(status='Unactioned')
     status=status_form()
     lestat=status_form_leave()
+    potform=status_form_pot()
+    
     if request.method=="POST":
          if 'otbutt' in request.POST:
         
@@ -44,9 +49,17 @@ def index(request):
             t = Leave.objects.get(id=ot_pk)
             t.status = nv  
             t.save()
-         return render(request,'index.html', {'lestat':lestat,'status':status,'myot':myot,'otapprove':otapprove, 'alapprove':alapprove, 'myhours':myhours,'myleave':myleave,'myottotal':myottotal,' team_leave':team_leave})
+            
+         elif 'potbutt' in request.POST:
+            ot = status_form_pot(request.POST)
+            nv = ot['status'].value()
+            ot_pk=request.POST.get('po_pk')
+            t = Pot.objects.get(id=ot_pk)
+            t.status = nv  
+            t.save()
+         return render(request,'index.html', {'potapprove':potapprove,'potform':potform,'lestat':lestat,'status':status,'myot':myot,'otapprove':otapprove, 'alapprove':alapprove, 'myhours':myhours,'myleave':myleave,'myottotal':myottotal,' team_leave':team_leave})
     else:
-     return render(request,'index.html', {'lestat':lestat,'status':status,'absence':absence,'myot':myot,'otapprove':otapprove, 'alapprove':alapprove, 'myhours':myhours,'myleave':myleave,'myottotal':myottotal,'team_leave':team_leave, 'hours_total':hours_total,'pot':pot})
+     return render(request,'index.html', {'potapprove':potapprove,'potform':potform,'lestat':lestat,'status':status,'absence':absence,'myot':myot,'otapprove':otapprove, 'alapprove':alapprove, 'myhours':myhours,'myleave':myleave,'myottotal':myottotal,'team_leave':team_leave, 'hours_total':hours_total,'pot':pot})
 
 @login_required
 def logout(request):

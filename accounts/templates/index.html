@@ -219,6 +219,43 @@
                         {% endfor %}
                      
                     </tr>
+                    
+                      <thead class="">
+                    <tr>
+
+                        <th scope="col">Name</th>
+                        <th scope="col">start</th>
+                        <th scope="col">end</th>
+                         <th scope="col">Hours</th>
+                        <th scope="col">Date</th>
+                        <th scope="col">Worked</th>
+                        <th scope="col">Approved</th>
+                        
+
+                    </tr>
+                </thead>
+                    {% for pot in potapprove %}
+                    <tr>
+                        <td> {{pot.user.first_name}} {{pot.user.last_name}}</td>
+                        <td>{{pot.pot_start}}</td>
+                        <td>{{pot.pot_end}}</td>
+                        <td>{{pot.hours}}</td>
+                        <td>{{pot.Date}}</td>
+                        <td>{{pot.worked}}</td>
+                        
+                        <td>
+                            <form method='POST'>
+                                <div class="form-group form-check">
+                                   
+                                    <input type="hidden" name="po_pk" value="{{pot.pk}}" />
+                                    {% csrf_token %}
+                                     {{ status | as_bootstrap }}
+                                   
+                                </div><button type="submit" name='potbutt' class="btn btn-outline-secondary">Approve</button></form>
+                        </td>
+                        {% endfor %}
+                     
+                    </tr>
                 </tbody>
             </table>
 

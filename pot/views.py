@@ -4,6 +4,7 @@ from accounts.models import Profile
 from .forms import pot_form
 from .models import Pot
 from datetime import datetime
+from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 
 @login_required()
@@ -49,6 +50,7 @@ def pot(request):
             o.appmanager=approver
             o.appmanagerun=appmanagerun
             o.save()
+            messages.error(request, "request submitted")
             return render(request, 'pot.html',{'form':form, 'approver':approver}) 
  
         

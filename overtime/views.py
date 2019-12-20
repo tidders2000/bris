@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
+from django.contrib import messages
 from .forms import overtime_form
 from .models import Overtime
 from datetime import datetime
@@ -33,6 +34,7 @@ def overtime(request):
             o.appmanager=approver
             o.appmanagerun=appmanagerun
             o.save()
+            messages.error(request, "request submitted")
             return render(request, 'ot_request.html',{'form':form, 'approver':approver}) 
  
         

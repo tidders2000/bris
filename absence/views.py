@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from .models import Absence, Reason
 from .forms import absence_form
+from django.contrib import messages
 # Create your views here.
 
 def absence(request):
@@ -11,7 +12,7 @@ def absence(request):
         af=absence_form(request.POST)
         if af.is_valid():
             af.save(commit=True)
-            
+            messages.error(request, "Changes saved")
             
             return render(request,'absence.html',{'form':form})
        
@@ -27,6 +28,7 @@ def absence_edit(request,id):
         if af.is_valid():
             if af.is_valid():
              af.save(commit=True)
+             messages.error(request, "Changes saved")
              return redirect('index.html',{'form':form})
     else:   
      

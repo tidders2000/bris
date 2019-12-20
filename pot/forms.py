@@ -12,3 +12,7 @@ class pot_form(forms.ModelForm):
         widget=forms.DateInput(format='%d/%m/%Y', attrs={'class': 'datepicker'}),
         input_formats=('%d/%m/%Y', )
         )
+class status_form_pot(forms.ModelForm):
+    class Meta:
+        model = Pot
+        fields =( 'status',)

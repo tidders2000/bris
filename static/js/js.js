@@ -4,6 +4,18 @@ $(function() {
   $("#hide").click(function() {
     $(".1").toggle();
   });
+  
+    $('#fade').hide()
+	  
+	  $('#alert').mouseover(function(){
+	  	 $('#fade').show()
+	  })
+
+	  /*hide alert box */
+	  $('#fade').click(function() {
+	    $('#alert').hide();;
+	  });
+  
   /*hides holiday on the rota and chat*/
   array = []
 

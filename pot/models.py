@@ -4,6 +4,7 @@ from django.contrib.auth.models import User
 location=[('bingham','bingham'),('cropwell','cropwell'),('cotgrave','cotgrave')]
 teams=[('nurseing','nursing'),('hca','hca'),('admin','admin')]
 worked=[('pluspot','pluspot'),('minuspot','minuspot')]
+status=[('Unactioned','Unactioned'),('Declined','Declined'),('Approved','Approved')]
 class Pot(models.Model):
     user = models.ForeignKey(User, null=True,on_delete=models.CASCADE)
     team=models.CharField(max_length=254, choices=teams)
@@ -15,5 +16,6 @@ class Pot(models.Model):
     approved = models.BooleanField(default=False)
     appmanager = models.CharField(max_length=254, null=True)
     appmanagerun = models.CharField(max_length=254, null=True)
+    status=models.CharField(max_length=254, choices=status, default="Unactioned")
     width = models.CharField(max_length=254, default='20')
     worked=models.CharField(max_length=254, choices=worked, null=True)
