@@ -51,6 +51,7 @@ def rota(request):
     else:
      return render(request,'rota.html',{'days':days,'teams':teams, 'selection':selection})
 
+""" renders rota view"""
 
 @login_required
 def rota_view(request):

@@ -13,26 +13,32 @@ from overtime.forms import status_form
 from leave.forms import status_form_leave
 from pot.forms import status_form_pot
 
-
+""" displays dashboard page """
 @login_required
 def index(request):
+    """ works out loggin user and team ids"""
     current_user = request.user.pk
     teaml= request.user.profile.team
+    """approval requests"""
     otapprove=Overtime.objects.filter(appmanager=current_user).filter(status='Unactioned')
     alapprove=Leave.objects.filter(appmanager=current_user).filter(status='Unactioned')
+    """user personal information """
     myhours=Establishment.objects.filter(user=current_user)
     hours_total=Establishment.objects.filter(user=current_user).aggregate(Sum('hours')).get('hours__sum',0.00)
     myleave=Leave.objects.filter(user=current_user)
     myot=Overtime.objects.filter(user=current_user).order_by('Date')
     absence=Absence.objects.filter(absence_end__isnull=True)
+    """overtime total for cicle"""
     myottotal=Overtime.objects.filter(user=current_user).exclude(status='Declined').aggregate(Sum('hours')).get('hours__sum',0.00)
     team_leave=Leave.objects.filter(team=teaml).exclude(status='Declined').order_by('date_start')
     pot=request.user.profile.pot
     potapprove=Pot.objects.filter(appmanager=current_user).filter(status='Unactioned')
+    """ manages the approval form for leave"""
+    
     status=status_form()
     lestat=status_form_leave()
     potform=status_form_pot()
-    
+    """manages approval process for leave types"""
     if request.method=="POST":
          if 'otbutt' in request.POST:
         

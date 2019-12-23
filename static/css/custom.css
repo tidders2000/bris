@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Bitter|Teko&display=swap');
 
-
+/*............................General..............................*/
 
 body{
     font-family: 'Bitter', serif;
@@ -10,13 +10,13 @@ body{
 h1, h2, h3,h4, h5{
     font-family: 'Teko', sans-serif;
 }
-
+/* generic table styling*/
 thead{
   background-color: #5a5a5a;
   color:white;
   font-size: 16px;
 }
-/*............................General..............................*/
+
 table{
     text-align: center;
     /*margin-top: 100px;*/
@@ -43,14 +43,21 @@ nav{
 
 .container-fluid{
     margin-top:130px;
-}
+} /*allows container to miss nav*/
+
 .nav-link {
   color:white!important;
   font-size: 18px;
 }
 
-/*............................login..............................*/
+.dropdown-menu{
+  padding-left: 15px;
+  width:300px;
+  background-color: #359CAB;
+}
 
+/*............................login..............................*/
+/*background image for login*/
 .index_bg_img{
     height: 700px;
     background-image: url('../images/Picture1.jpg');
@@ -60,17 +67,14 @@ nav{
     
 }
 
+/*styles login form*/
 .log_form{
     margin-top: 10%;
 }
 
 /*............................index..............................*/
 
-.dropdown-menu{
-  padding-left: 15px;
-  width:300px;
-  background-color: #359CAB;
-}
+/* style data circles at top of page*/
 .data-circle{
       height: 200px;
   width: 200px;
@@ -86,7 +90,7 @@ nav{
   margin-bottom: 15px;
   
 }
-
+/* styles text in datacircles*/
 .dc-info{
   color:white;
   font-size: 18px;
@@ -95,11 +99,13 @@ nav{
 .dc-text{
   color:#5a5a5a;
 }
+
+/*style approval table*/
 .approvals{
    padding-left: 0!important;
    padding-right: 0!important;
 }
-
+/*style approval abs link to update absence form*/
 .abs_butt{
   background-color: red;
 }
@@ -112,18 +118,23 @@ nav{
 /*............................view Rota..............................*/
 
 
-
+/*styles submit button*/
 
 .butt_float{
   float:right;
 }
 
+/*styles header div*/
 .day{
   text-align: center;
 }
+
+/*team holiday hideen if empty*/
 .test{
   display:none;
 }
+
+/*styles site colours in bar chart*/
 .bingham{
  fill:rgb(230,230,250);
 }
@@ -136,9 +147,13 @@ nav{
 .rota_holder{
   margin-top: 100px;/*sets gap between table and search*/
 }
+
+/*ot bar styling*/
 .ot_col{
  color:#FF7F50;
 }
+
+/*pot bar styling*/
 .pluspot{
   color:green;
   fill:rgb(127,255,0);
@@ -150,7 +165,7 @@ nav{
    
 }
 
-
+/*styles search form and button*/
 .search{
   display:block;
   margin:auto;
@@ -168,6 +183,8 @@ nav{
  margin:auto;
   
 }
+
+/*rota styling*/
 .rota_div{
   padding: 0;
 }
@@ -194,11 +211,18 @@ nav{
 .message{
     width:20%;
     margin-left: 40%;
-    min-height:50px;
-    margin-top: 50px;
-    background-color:#FFF3CD;
-    border-radius: 5px;
-    padding-left: 5px;
+    min-height:150px;
+    margin-top: 5px;
+    position: fixed;
+    top:30%;
+    z-index: 1;
+    background-color:	#fffff4;
+    border-radius: 15px;
+    border:#0DA1AF 5px solid;
+    padding-left: 10px;
+    font-family: inherit;
+    font-size: 20px;
+    text-align: center;
     color:black;
    
 }
@@ -207,5 +231,10 @@ nav{
     cursor: pointer;
     font-weight: bold;
     float: right;
-    padding-right: 2px;
+    padding:5px;
+    position: absolute;
+    bottom: 0;
+    left: 35%;
+    text-align: center;
 }
+  

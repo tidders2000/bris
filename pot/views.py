@@ -6,7 +6,7 @@ from .models import Pot
 from datetime import datetime
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
-
+""" renders pot form"""
 @login_required()
 def pot(request):
     """form for staff to add overtime"""    

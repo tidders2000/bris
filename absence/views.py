@@ -4,6 +4,8 @@ from .forms import absence_form
 from django.contrib import messages
 # Create your views here.
 
+""" allows a manager to record and absence"""
+
 def absence(request):
     
     form=absence_form()
@@ -17,7 +19,8 @@ def absence(request):
             return render(request,'absence.html',{'form':form})
        
     return render(request,'absence.html',{'form':form})
-
+    
+""" allows a manager to update a absence form on employee return"""
 def absence_edit(request,id):
    
     abs = get_object_or_404(Absence, id=id)

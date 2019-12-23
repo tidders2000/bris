@@ -80,17 +80,22 @@
 
 <div class="container-fluid">
 
-{% if messages %}
+
+
+
+<!-- django content blocks for templates -->
+    {% block content %}
+    
+
+    
+    {% endblock %}
+      {% if messages %}
     
 <div class="message" id='alert' role="alert">
   
   {% for message in messages %} {{ message }} {% endfor %} {% endif%} 
- <span id='fade'>X</span>
+ <span id='fade'>CLOSE</span>
     </div>
-
-
-<!-- django content blocks for templates -->
-    {% block content %}{% endblock %}
     
 <!-- Bootstrap dependancies -->
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

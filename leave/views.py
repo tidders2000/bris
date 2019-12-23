@@ -6,6 +6,8 @@ from datetime import datetime
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 # Create your views here.
+
+""" return form for users to request leave"""
 @login_required
 def leave(request):
     form=leave_form()
