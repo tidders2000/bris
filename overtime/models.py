@@ -14,7 +14,7 @@ class Overtime(models.Model):
     shift_end = models.TimeField(auto_now=False)
     ot_type = models.CharField(max_length=254, choices=ot_type, default="normal")
     ot_reason = models.TextField(blank=True)
-    hours = models.DecimalField(max_digits=3, decimal_places=1,) 
+    hours = models.DecimalField(max_digits=2, decimal_places=1,default=0) 
     status=models.CharField(max_length=254, choices=status, default="Unactioned")
     appmanager = models.CharField(max_length=254, null=True)
     appmanagerun = models.CharField(max_length=254, null=True)
