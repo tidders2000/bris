@@ -113,7 +113,12 @@ def estab_rep(request):
         b=sum(unu)
         c=a+b
         """gets overtime worked for period"""
+       
         overtime=Overtime.objects.filter(Date__gte=start, Date__lte=finish).aggregate(Sum('hours')).get('hours__sum',0.00)
+        if overtime is None:
+         overtime = 0
+        
+        
         total=a-b+overtime
         return render(request,'estab_rep.html',{'result':result,'estab':estab,'unu':unu,'overtime':overtime,'total':total,'c':c,'month_name':month_name})
     
