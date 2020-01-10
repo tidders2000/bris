@@ -1,3 +1,5 @@
+
+
 from django.db import models
 from django.contrib.auth.models import User
 days =[('Monday','Monday'),('Tuesday','Tuesday'),('Wednesday','Wednesday'),('Thursday','Thursday'),('Friday','Friday')] 
@@ -5,6 +7,7 @@ teams=[('nurseing','nursing'),('hca','hca'),('admin','admin')]
 location=[('bingham','bingham'),('cropwell','cropwell'),('cotgrave','cotgrave')]
 
 class Establishment (models.Model):
+    
 
     shiftname=models.CharField(max_length=254, default='shift')
     team=models.CharField(max_length=254, choices=teams)

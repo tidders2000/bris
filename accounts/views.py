@@ -25,6 +25,7 @@ def index(request):
     """user personal information """
     myhours=Establishment.objects.filter(user=current_user)
     hours_total=Establishment.objects.filter(user=current_user).aggregate(Sum('hours')).get('hours__sum',0.00)
+    
     myleave=Leave.objects.filter(user=current_user)
     myot=Overtime.objects.filter(user=current_user).order_by('Date')
     absence=Absence.objects.filter(absence_end__isnull=True)
