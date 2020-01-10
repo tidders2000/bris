@@ -41,3 +41,4 @@ virtualenvwrapper==4.8.4
 wrapt==1.11.1
 gunicorn==19.9.0
 xhtml2pdf==0.2.3
+whitenoise==3.3.1
