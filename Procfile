@@ -1,1 +1,1 @@
-web: gunicorn jbeventing.wsgi:application
+web: gunicorn bris.wsgi:application
