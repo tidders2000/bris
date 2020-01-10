@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'reports',
     'pot',
     'absence',
+    'whitenoise',
     ]
 
 
