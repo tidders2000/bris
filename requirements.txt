@@ -1,6 +1,6 @@
 arrow==0.14.2
 astroid==1.6.6
-aws-lambda-builders==0.4.0
+aws-lambda-builders==0.0.5
 aws-sam-cli==0.21.0
 aws-sam-translator==1.11.0
 backports.functools-lru-cache==1.5
