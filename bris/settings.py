@@ -47,7 +47,7 @@ INSTALLED_APPS = [
     'reports',
     'pot',
     'absence',
-    'DjangoWhiteNoise'
+    'whitenoise'
     
     ]
 
