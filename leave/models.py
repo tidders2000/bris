@@ -12,7 +12,7 @@ class Leave(models.Model):
     date_start = models.DateField(auto_now=False)
     date_end = models.DateField(auto_now=False)
     approved = models.BooleanField(default=False)
-    hours = models.IntegerField()
+    hours = models.FloatField()
     days= models.CharField(max_length=254)
     status=models.CharField(max_length=254, choices=status, default="Unactioned")
     appmanager = models.CharField(max_length=254, null=True, default='approver')
