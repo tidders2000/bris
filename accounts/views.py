@@ -23,7 +23,7 @@ def index(request):
     otapprove=Overtime.objects.filter(appmanager=current_user).filter(status='Unactioned')
     alapprove=Leave.objects.filter(appmanager=current_user).filter(status='Unactioned')
     """user personal information """
-    myhours=Establishment.objects.filter(user=current_user,order_by=['day'])
+    myhours=Establishment.objects.filter(user=current_user).order_by('day')
     hours_total=Establishment.objects.filter(user=current_user).aggregate(Sum('hours')).get('hours__sum',0.00)
     
     myleave=Leave.objects.filter(user=current_user)
