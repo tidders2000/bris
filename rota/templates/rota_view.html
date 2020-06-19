@@ -1,4 +1,4 @@
-{% extends 'base.html' %} {% block page_title %}Rota view{% endblock %} {% block page_heading %}{% endblock %} {% block content %}
+{% extends 'base.html' %} {% block page_title %}Ro view{% endblock %} {% block page_heading %}{% endblock %} {% block content %}
 
 
 <div class='col-sm-12 day'>
@@ -20,11 +20,11 @@
 
                 <input type="text" class="form-control" list="list2" name="team" class='input_filter' placeholder="TEAM" />
                 <datalist id="list2">
-                     {% for team in teams %}
-                        <option  value="{{ team.team }}">
-                       
-                     {% endfor %}
-                              </datalist><br>
+                    {% for team in teams %}
+                    <option value="{{ team.team }}">
+
+                        {% endfor %}
+                </datalist><br>
 
                 </select>
             </div>
@@ -44,8 +44,8 @@
 <div class="row">
     <div class="col-6">
 
-        <form method="POST" >
-              <input type="hidden" name="team" value="{{team}}">
+        <form method="POST">
+            <input type="hidden" name="team" value="{{team}}">
             <input type="hidden" name="date" value='{{dateymin}}'>
             <button type='submit' class='butt_float'><i class="fas fa-caret-left"></i></button> {% csrf_token %}
         </form>
@@ -55,7 +55,7 @@
             <input type="hidden" name="team" value="{{team}}">
             <input type="hidden" name="date" value='{{datemax}}'>
             <button type='submit'><i class="fas fa-caret-right"></i></button> {% csrf_token %}
-            </form>
+        </form>
     </div>
 </div>
 </div>
@@ -84,31 +84,41 @@
         <br> {% for select in selection %}
         <div class="col-md-4 rota_graph {{select.user.id}}" style="margin-left:{{select.width}}cm; ">
             <svg width="{{select.hours}}cm " height="30">
-  <rect width="{{select.hours}}cm " height="30 " class="{{select.location}}"style="stroke-width:3;stroke:rgb(0,0,0)" data-toggle="popover" title="{{select.user.first_name}} {{select.user.last_name}}" data-content="{{select.shift_start}}-{{select.shift_end}} " />
-</svg>
+                <rect width="{{select.hours}}cm " height="30 " class="{{select.location}}"
+                    style="stroke-width:3;stroke:rgb(0,0,0)" data-toggle="popover"
+                    title="{{select.user.first_name}} {{select.user.last_name}}"
+                    data-content="{{select.shift_start}}-{{select.shift_end}} " />
+            </svg>
 
         </div>
 
         {% endfor %} {% for over in overtime %}
         <div class="col-md-4 rota_graph " style="margin-left:{{over.width}}cm; ">
             <svg width="{{over.hours}}cm " height="30">
-  <rect width="{{over.hours}}cm " height="30 " style="fill:rgb(255,127,80);stroke-width:3;stroke:rgb(0,0,0) " data-toggle="popover" title="{{over.user.first_name}} {{over.user.last_name}}" data-content="{{over.shift_start}}-{{over.shift_end}} " />
-</svg>
+                <rect width="{{over.hours}}cm " height="30 "
+                    style="fill:rgb(255,127,80);stroke-width:3;stroke:rgb(0,0,0) " data-toggle="popover"
+                    title="{{over.user.first_name}} {{over.user.last_name}}"
+                    data-content="{{over.shift_start}}-{{over.shift_end}} " />
+            </svg>
 
         </div>
 
         {% endfor %} {% for p in pot %} {% if p.worked == 'pluspot' %}
         <div class="col-md-4 rota_graph " style="margin-left:{{p.width}}cm;">
             <svg width="{{p.hours}}cm " height="30">
-  <rect width="{{p.hours}}cm " height="30 " style="fill:rgb(127,255,0);stroke-width:3;stroke:rgb(0,0,0) " data-toggle="popover" title="{{p.user.first_name}} {{p.user.last_name}}" data-content="{{p.pot_start}}-{{p.pot_end}}"/>
-</svg>
+                <rect width="{{p.hours}}cm " height="30 " style="fill:rgb(127,255,0);stroke-width:3;stroke:rgb(0,0,0) "
+                    data-toggle="popover" title="{{p.user.first_name}} {{p.user.last_name}}"
+                    data-content="{{p.pot_start}}-{{p.pot_end}}" />
+            </svg>
 
         </div>
         {% else %}
         <div class="col-md-4 rota_graph " style="margin-left:{{p.width}}cm;">
             <svg width="{{p.hours}}cm " height="30">
-  <rect width="{{p.hours}}cm " height="30 " style="fill:rgb(220,20,60);stroke-width:3;stroke:rgb(0,0,0) " data-toggle="popover" title="{{p.user.first_name}} {{p.user.last_name}}" data-content="{{p.pot_start}}-{{p.pot_end}}"/>
-</svg>
+                <rect width="{{p.hours}}cm " height="30 " style="fill:rgb(220,20,60);stroke-width:3;stroke:rgb(0,0,0) "
+                    data-toggle="popover" title="{{p.user.first_name}} {{p.user.last_name}}"
+                    data-content="{{p.pot_start}}-{{p.pot_end}}" />
+            </svg>
 
         </div>
         {% endif %} {% endfor %}

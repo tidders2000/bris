@@ -26,7 +26,8 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = [os.environ.get('C9_HOSTNAME'), '60864f39b7b949dcbebfd57f7919b62f.vfs.cloud9.us-east-1.amazonaws.com','bhg-bris.herokuapp.com']
+ALLOWED_HOSTS = [os.environ.get(
+    'C9_HOSTNAME'), '60864f39b7b949dcbebfd57f7919b62f.vfs.cloud9.us-east-1.amazonaws.com', 'bhg-bris.herokuapp.com', '127.0.0.1']
 
 
 # Application definition
@@ -48,8 +49,8 @@ INSTALLED_APPS = [
     'pot',
     'absence',
     'whitenoise'
-    
-    ]
+
+]
 
 
 MIDDLEWARE = [
@@ -61,7 +62,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
-    
+
 ]
 
 ROOT_URLCONF = 'bris.urls'
@@ -69,8 +70,8 @@ ROOT_URLCONF = 'bris.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR),'templates'],
-       
+        'DIRS': [os.path.join(BASE_DIR), 'templates'],
+
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -79,7 +80,7 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'django.contrib.auth.context_processors.auth',
-              
+
             ],
         },
     },
@@ -94,15 +95,16 @@ WSGI_APPLICATION = 'bris.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
 if "DATABASE_URL" in os.environ:
-       DATABASES = {'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))}
+    DATABASES = {'default': dj_database_url.parse(
+        os.environ.get('DATABASE_URL'))}
 else:
     print("Database url not found using sql instead")
     DATABASES = {
-     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-       'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        }
     }
-}
 
 # Password validation
 # https://docs.djangoproject.com/en/1.11/ref/settings/#auth-password-validators
@@ -123,14 +125,14 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 AUTHENTICATION_BACKENDS = [
-  'django.contrib.auth.backends.ModelBackend',
-  'accounts.backends.EmailAuth'
+    'django.contrib.auth.backends.ModelBackend',
+    'accounts.backends.EmailAuth'
 ]
 # Internationalization
 # https://docs.djangoproject.com/en/1.11/topics/i18n/
 
 LANGUAGE_CODE = 'en-us'
-DATETIME_FORMAT = '%d-%m-%Y' 
+DATETIME_FORMAT = '%d-%m-%Y'
 
 TIME_ZONE = 'GMT'
 
