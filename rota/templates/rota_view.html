@@ -1,6 +1,39 @@
-{% extends 'base.html' %} {% block page_title %}Ro view{% endblock %} {% block page_heading %}{% endblock %} {% block content %}
+{% extends 'base.html' %} {% load staticfiles %} {% block page_title %}Rota view{% endblock %} {% block page_heading %}{% endblock %} {% block content %}
 
 
+<h2>Monday</h2>
+
+{% for select in selection%} {% if select.day == 'Monday' %}
+<div class="card" style="width: 18rem;">
+    <img class="card-img-top" src="{% static 'images/person.jpg' %}" alt="Card image cap">
+    <div class="card-body">
+        <h5 class="card-title">{{select.user}}</h5>
+
+    </div>
+    <ul class="list-group list-group-flush">
+        <li class="list-group-item">
+            <b>Start:</b>{{select.shift_start}}
+        </li>
+        <li class="list-group-item">
+            <b>Finish:</b>{{select.shift_end}}
+        </li>
+
+    </ul>
+    <div class="card-body">
+
+        <p>Hours:{{select.hours}}</p>
+    </div>
+</div>
+
+{% endif %} {% endfor %}
+
+<h2>Tuesday</h2>
+
+
+{% for select in selection%} {% if select.day == 'Tuesday' %} {{select.user}} {% endif %} {% endfor %}
+
+
+<!--
 <div class='col-sm-12 day'>
     <h1>{{day}}</h1>
 </div>
@@ -214,6 +247,6 @@
         </tr>
         {% endfor %}
     </tbody>
-</table>
+</table>-->
 
 {% endblock %}

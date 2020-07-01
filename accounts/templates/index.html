@@ -1,7 +1,7 @@
-{% extends 'base.html' %}{% load bootstrap_tags %} {% block page_title %}Home Page{% endblock %} {% block page_heading %}Home{% endblock %} {% block content %}
+{% extends 'base.html' %}{% load staticfiles %}{% load bootstrap_tags %} {% block page_title %}Home Page{% endblock %} {% block page_heading %}Home{% endblock %} {% block content %}
 <div class="container-fluid">
     <!--data circles-->
-
+    <!--
     <div class="row">
 
         <div class="col-md-4">
@@ -25,43 +25,67 @@
             </div>
         </div>
 
-    </div>
+    </div>-->
 
     <!-- absence forms for currect sick staff hidden for staff-->
-    {% if perms.absence.change_reason %}
     <div class="row">
-
-        <h1>Absent Staff</h1>
-    </div>
-    <div class="row">
-
-        <div class="col-12-sm col-md-6 offset-md-3">
-
-            {% for a in absence %} {% if user.profile.team == a.user.profile.team %}
-
-            <div class='staff_ab_text'>{{a.user.first_name}} {{a.user.last_name}} {{a.absence_start}} <a class="btn btn-default" href="/absence/edit/{{a.id}}/"><span class='abs_butt'>Complete RTW</span></a> </div>
-
-            {% endif %} {% endfor %}
-
-
+        <div class="text-center col-md-4 offset-md-1 p-5 bg-dark">
+            <a href="{% url 'absence' %}"> <i class="fa fa-user-plus fa-5x roll-over" aria-hidden="true"></i></a><br>
+            <h4 class='text-white'>Add Absence</h4>
+        </div>
+        <div class="col-md-2"></div>
+        <div class="text-center col-md-4  p-5 bg-dark">
+            <a href="{% url 'teamabs_rep' %}"> <i class="fa fa-history fa-5x roll-over" aria-hidden=" true "></i></a><br>
+            <h4 class='text-white'>Check History</h4>
         </div>
     </div>
-    {% endif %}
+    {% if perms.absence.change_reason %}
+    <div class=" row ">
 
-    <!-- logged in user hours -->
-    <div class="row">
+
+        <h2 class='mt-4'>Absent Staff</h2>
+
+    </div>
+    <div class=" row ">
+
+
+
+        {% for a in absence %} {% if user.profile.team == a.user.profile.team %}
+        <div class=" card col-md-2 " style="width: 18rem; ">
+            <div class="card-body ">
+                <h5 class="card-title ">{{a.user.first_name}} {{a.user.last_name}}</h5>
+
+                <p class="card-text "> {{a.absence_start}}.</p>
+                <a class=" btn btn-default " href="/absence/edit/{{a.id}}/ "><span class='abs_butt'>Complete
+                        RTW</span></a>
+            </div>
+
+        </div>
+
+
+
+
+        {% endif %} {% endfor %}
+
+
+    </div>
+</div>
+{% endif %}
+
+<!-- logged in user hours 
+    <div class=" row ">
         <h1>My Hours</h1>
     </div>
 
-    <div class="row">
+    <div class=" row ">
 
-        <div class="col-sm-12 col-md-6 offset-md-3">
-            <table class="table table-hover">
+        <div class=" col-sm-12 col-md-6 offset-md-3 ">
+            <table class=" table table-hover ">
                 <thead>
                     <tr>
-                        <th scope="col">Day</td>
-                            <th scope="col">Start</td>
-                                <th scope="col">Finish</td>
+                        <th scope=" col ">Day</td>
+                            <th scope=" col ">Start</td>
+                                <th scope=" col ">Finish</td>
                     </tr>
                 </thead>
                 <tbody>
@@ -79,25 +103,25 @@
         </div>
 
 
-    </div>
+    </div>-->
 
-    <!-- logged in user overtime -->
-    <div class="row">
+<!-- logged in user overtime 
+    <div class=" row ">
         <h1>My Overtime</h1>
     </div>
 
-    <div class="row">
+    <div class=" row ">
 
-        <div class="col-sm-10 offset-sm-1 approvals">
-            <table class="table table-bordered table-hover">
+        <div class=" col-sm-10 offset-sm-1 approvals ">
+            <table class=" table table-bordered table-hover ">
                 <thead>
 
                     <tr>
 
 
-                        <th scope="col">Date</th>
-                        <th scope="col">Hours</th>
-                        <th scope="col">Status</th>
+                        <th scope=" col ">Date</th>
+                        <th scope=" col ">Hours</th>
+                        <th scope=" col ">Status</th>
 
                     </tr>
                 </thead>
@@ -116,24 +140,24 @@
         </div>
     </div>
 
-    <div class="row">
+    <div class=" row ">-->
 
-        <!-- logged in user hols -->
+<!-- logged in user hols 
         <h1>My Holidays</h1>
     </div>
 
-    <div class="row">
+    <div class=" row ">
 
-        <div class="col-sm-10 offset-sm-1 approvals">
-            <table class="table table-bordered table-hover">
+        <div class=" col-sm-10 offset-sm-1 approvals ">
+            <table class=" table table-bordered table-hover ">
                 <thead>
 
                     <tr>
 
 
-                        <th scope="col">Start</th>
-                        <th scope="col">End</th>
-                        <th scope="col">Days</th>
+                        <th scope=" col ">Start</th>
+                        <th scope=" col ">End</th>
+                        <th scope=" col ">Days</th>
                         <th scope='col'>Approved</th>
 
                     </tr>
@@ -154,23 +178,23 @@
                 </tbody>
             </table>
         </div>
-    </div>
-    
-    <!-- approvals for managers hidden for staff  -->
+    </div>-->
+
+<!-- approvals for managers hidden for staff  
     {% if perms.absence.change_reason %}
-    <div class="row">
+    <div class=" row ">
         <h1>My Approvals{{at}}</h1>
-        <div class="col-sm-10 offset-sm-1 approvals">
+        <div class=" col-sm-10 offset-sm-1 approvals ">
             <h2>Overtime requests</h2>
-            <table class="table table-bordered table-hover rota_tab">
-                <thead class="">
+            <table class=" table table-bordered table-hover rota_tab ">
+                <thead class=" ">
                     <tr>
 
-                        <th scope="col">Name</th>
-                        <th scope="col">Times</th>
-                        <th scope="col">Date</th>
-                        <th scope="col">Location</th>
-                        <th scope="col">Approve</th>
+                        <th scope=" col ">Name</th>
+                        <th scope=" col ">Times</th>
+                        <th scope=" col ">Date</th>
+                        <th scope=" col ">Location</th>
+                        <th scope=" col ">Approve</th>
 
                     </tr>
                 </thead>
@@ -185,26 +209,26 @@
                         <td>{{ot.location}}</td>
                         <td>
                             <form method='POST'>
-                                <div class="form-group form-check">
+                                <div class=" form-group form-check ">
 
-                                    <input type="hidden" name="ot_pk" value="{{ot.pk}}" /> {% csrf_token %} {{ status | as_bootstrap }}
+                                    <input type=" hidden " name=" ot_pk " value=" {{ot.pk}} " /> {% csrf_token %} {{ status | as_bootstrap }}
 
-                                </div><button type="submit" name='otbutt' class="btn btn-outline-secondary">Approve</button></form>
+                                </div><button type=" submit " name='otbutt' class=" btn btn-outline-secondary ">Approve</button></form>
                         </td>
                         {% endfor %}
                     </tr>
                 </tbody>
             </table>
             <h2>Annual Leave</h2>
-            <table class="table table-bordered table-hover rota_tab">
-                <thead class="">
+            <table class=" table table-bordered table-hover rota_tab ">
+                <thead class=" ">
                     <tr>
 
-                        <th scope="col">Name</th>
-                        <th scope="col">start</th>
-                        <th scope="col">end</th>
-                        <th scope="col">Days</th>
-                        <th scope="col">Approve</th>
+                        <th scope=" col ">Name</th>
+                        <th scope=" col ">start</th>
+                        <th scope=" col ">end</th>
+                        <th scope=" col ">Days</th>
+                        <th scope=" col ">Approve</th>
 
 
                     </tr>
@@ -219,11 +243,11 @@
 
                         <td>
                             <form method='POST'>
-                                <div class="form-group form-check">
+                                <div class=" form-group form-check ">
 
-                                    <input type="hidden" name="al_pk" value="{{al.pk}}" /> {% csrf_token %} {{ status | as_bootstrap }}
+                                    <input type=" hidden " name=" al_pk " value=" {{al.pk}} " /> {% csrf_token %} {{ status | as_bootstrap }}
 
-                                </div><button type="submit" name='albutt' class="btn btn-outline-secondary">Approve</button></form>
+                                </div><button type=" submit " name='albutt' class=" btn btn-outline-secondary ">Approve</button></form>
                         </td>
                         {% endfor %}
 
@@ -231,17 +255,17 @@
                 </tbody>
             </table>
             <h2>Pot Hours</h2>
-             <table class="table table-bordered table-hover rota_tab"> 
-            <thead class="">
+             <table class=" table table-bordered table-hover rota_tab "> 
+            <thead class=" ">
                 <tr>
 
-                    <th scope="col">Name</th>
-                    <th scope="col">start</th>
-                    <th scope="col">end</th>
-                    <th scope="col">Hours</th>
-                    <th scope="col">Date</th>
-                    <th scope="col">Worked</th>
-                    <th scope="col">Approved</th>
+                    <th scope=" col ">Name</th>
+                    <th scope=" col ">start</th>
+                    <th scope=" col ">end</th>
+                    <th scope=" col ">Hours</th>
+                    <th scope=" col ">Date</th>
+                    <th scope=" col ">Worked</th>
+                    <th scope=" col ">Approved</th>
 
 
                 </tr>
@@ -258,11 +282,11 @@
 
                 <td>
                     <form method='POST'>
-                        <div class="form-group form-check">
+                        <div class=" form-group form-check ">
 
-                            <input type="hidden" name="po_pk" value="{{pot.pk}}" /> {% csrf_token %} {{ status | as_bootstrap }}
+                            <input type=" hidden " name=" po_pk " value=" {{pot.pk}} " /> {% csrf_token %} {{ status | as_bootstrap }}
 
-                        </div><button type="submit" name='potbutt' class="btn btn-outline-secondary">Approve</button></form>
+                        </div><button type=" submit " name='potbutt' class=" btn btn-outline-secondary ">Approve</button></form>
                 </td>
                 {% endfor %}
 
@@ -273,25 +297,25 @@
         </div>
     </div>
 
-    {% endif %}
+    {% endif %}-->
 
-    <!-- listed team leave -->
-    <div class="row">
+<!-- listed team leave 
+    <div class=" row ">
         <h1>Team Leave</h1>
     </div>
 
-    <div class="row">
+    <div class=" row ">
 
-        <div class="col-sm-10 offset-sm-1 approvals">
-            <table class="table table-bordered table-hover">
+        <div class=" col-sm-10 offset-sm-1 approvals ">
+            <table class=" table table-bordered table-hover ">
                 <thead>
 
                     <tr>
 
 
-                        <th scope="col">Name</th>
-                        <th scope="col">start</th>
-                        <th scope="col">end</th>
+                        <th scope=" col ">Name</th>
+                        <th scope=" col ">start</th>
+                        <th scope=" col ">end</th>
 
                     </tr>
                 </thead>
@@ -309,15 +333,6 @@
                 </tbody>
             </table>
         </div>
-    </div>
+    </div> -->
 </div>
-
-
-
-
-
-
-
-
-
 {% endblock %}

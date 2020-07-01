@@ -2,120 +2,150 @@
 
 /*............................General..............................*/
 
-body{
+body {
     font-family: 'Bitter', serif;
     font-size: 14px;
 }
 
-h1, h2, h3,h4, h5{
+h1,
+h2,
+h3,
+h4,
+h5 {
     font-family: 'Teko', sans-serif;
 }
+
+
 /* generic table styling*/
-thead{
-  background-color: #5a5a5a;
-  color:white;
-  font-size: 16px;
+
+thead {
+    background-color: #5a5a5a;
+    color: white;
+    font-size: 16px;
 }
 
-table{
+table {
     text-align: center;
     /*margin-top: 100px;*/
-   
 }
 
-.bg{
+.bg {
     background-color: red;
 }
 
+
 /*............................Base..............................*/
 
+
 /*...nav...*/
-nav{
-    background-color: rgb(103,170,66)
+
+nav {
+    background-color: rgb(103, 170, 66)
 }
 
-.title{
-    color:#2C6CB5;
+.title {
+    color: #2C6CB5;
     font-weight: 800;
     font-family: 'Teko', sans-serif;
     font-size: 30px;
 }
 
-.custom-toggler.navbar-toggler-icon { 
-    border-color: #2C6CB5; 
-} 
+.custom-toggler.navbar-toggler-icon {
+    border-color: #2C6CB5;
+}
 
-.container-fluid{
-    margin-top:130px;
-} /*allows container to miss nav*/
+.container-fluid {
+    margin-top: 130px;
+}
+
+
+/*allows container to miss nav*/
 
 .nav-link {
-  color:white!important;
-  font-size: 18px;
+    color: white !important;
+    font-size: 18px;
 }
 
-.dropdown-menu{
-  padding-left: 15px;
-  width:300px;
-  background-color: #359CAB;
+.dropdown-menu {
+    padding-left: 15px;
+    width: 300px;
+    background-color: #359CAB;
 }
+
 
 /*............................login..............................*/
+
+
 /*background image for login*/
-.index_bg_img{
+
+.index_bg_img {
     height: 700px;
     background-image: url('../images/Picture1.jpg');
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    
 }
 
+
 /*styles login form*/
-.log_form{
+
+.log_form {
     margin-top: 10%;
 }
 
+
 /*............................index..............................*/
 
+
 /* style data circles at top of page*/
-.data-circle{
-      height: 200px;
-  width: 200px;
-  background-color: #00ACB7;
-  border-radius: 50%;
-  display: block;
-  margin: auto;
-  text-align: center;
-  padding-top: 70px;
-  box-shadow: 6px 6px 5px grey;
-  font-size: 18px;
-  color:#676767;
-  margin-bottom: 15px;
-  
-}
-/* styles text in datacircles*/
-.dc-info{
-  color:white;
-  font-size: 18px;
+
+.data-circle {
+    height: 200px;
+    width: 200px;
+    background-color: #00ACB7;
+    border-radius: 50%;
+    display: block;
+    margin: auto;
+    text-align: center;
+    padding-top: 70px;
+    box-shadow: 6px 6px 5px grey;
+    font-size: 18px;
+    color: #676767;
+    margin-bottom: 15px;
 }
 
-.dc-text{
-  color:#5a5a5a;
+
+/* styles text in datacircles*/
+
+.dc-info {
+    color: white;
+    font-size: 18px;
 }
+
+.dc-text {
+    color: #5a5a5a;
+}
+
 
 /*style approval table*/
-.approvals{
-   padding-left: 0!important;
-   padding-right: 0!important;
+
+.approvals {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
 }
+
+
 /*style approval abs link to update absence form*/
-.abs_butt{
-  background-color: red;
+
+.abs_butt {
+    background-color: red;
 }
-.staff_ab_text{
-  font-size: 15px;
+
+.staff_ab_text {
+    font-size: 15px;
 }
+
+
 /*............................Add Rota..............................*/
 
 
@@ -124,123 +154,207 @@ nav{
 
 /*styles submit button*/
 
-.butt_float{
-  float:right;
+.butt_float {
+    float: right;
 }
+
 
 /*styles header div*/
-.day{
-  text-align: center;
+
+.day {
+    text-align: center;
 }
+
 
 /*team holiday hideen if empty*/
-.test{
-  display:none;
+
+.test {
+    display: none;
 }
+
 
 /*styles site colours in bar chart*/
-.bingham{
- fill:rgb(230,230,250);
+
+.bingham {
+    fill: rgb(230, 230, 250);
 }
 
-.cotgrave ,.cotgrave_col{
-   fill:rgb(70,130,180);
+.cotgrave,
+.cotgrave_col {
+    fill: rgb(70, 130, 180);
 }
 
-.cropwell{
-    fill:rgb(144,202,249);
+.cropwell {
+    fill: rgb(144, 202, 249);
 }
-.rota_holder{
-  margin-top: 100px;/*sets gap between table and search*/
+
+.rota_holder {
+    margin-top: 100px;
+    /*sets gap between table and search*/
 }
+
 
 /*ot bar styling*/
-.ot_col{
- color:#FF7F50;
+
+.ot_col {
+    color: #FF7F50;
 }
+
 
 /*pot bar styling*/
-.pluspot{
-  color:green;
-  fill:rgb(127,255,0);
 
+.pluspot {
+    color: green;
+    fill: rgb(127, 255, 0);
 }
-.minuspot{
-   color:red;
-   fill:rgb(127,255,0);
-   
+
+.minuspot {
+    color: red;
+    fill: rgb(127, 255, 0);
 }
+
 
 /*styles search form and button*/
-.search{
-  display:block;
-  margin:auto;
+
+.search {
+    display: block;
+    margin: auto;
 }
 
-.search_form{
- 
-  padding-left:0;
-  
+.search_form {
+    padding-left: 0;
 }
 
-.search_form form{
- 
- display: block;
- margin:auto;
-  
+.search_form form {
+    display: block;
+    margin: auto;
 }
+
 
 /*rota styling*/
-.rota_div{
-  padding: 0;
+
+.rota_div {
+    padding: 0;
 }
 
-
-.rota_tab{
-    width:100%;
+.rota_tab {
+    width: 100%;
 }
 
-.form_holder{
-  text-align: center;
+.form_holder {
+    text-align: center;
 }
 
-.togg{
-  margin-bottom: 10px;
+.togg {
+    margin-bottom: 10px;
 }
+
 
 /*............................alert box.............................*/
-.alert{
-    width:80%;
+
+.alert {
+    width: 80%;
     margin-left: 10%;
 }
 
-.message{
-    width:20%;
+.message {
+    width: 20%;
     margin-left: 40%;
-    min-height:150px;
+    min-height: 150px;
     margin-top: 5px;
     position: fixed;
-    top:30%;
+    top: 30%;
     z-index: 1;
-    background-color:	#fffff4;
+    background-color: #fffff4;
     border-radius: 15px;
-    border:#0DA1AF 5px solid;
+    border: #0DA1AF 5px solid;
     padding-left: 10px;
     font-family: inherit;
     font-size: 20px;
     text-align: center;
-    color:black;
-   
+    color: black;
 }
 
-#fade{
+#fade {
     cursor: pointer;
     font-weight: bold;
     float: right;
-    padding:5px;
+    padding: 5px;
     position: absolute;
     bottom: 0;
     left: 35%;
     text-align: center;
 }
-  
+
+.roll-over {
+    color: white;
+}
+
+.roll-over:hover {
+    color: orangered;
+    cursor: pointer;
+}
+
+
+/* Style the form */
+
+#regForm {
+    background-color: #ffffff;
+    margin: 100px auto;
+    padding: 40px;
+    width: 70%;
+    min-width: 300px;
+}
+
+
+/* Style the input fields */
+
+input {
+    padding: 10px;
+    width: 100%;
+    font-size: 17px;
+    font-family: Raleway;
+    border: 1px solid #aaaaaa;
+}
+
+
+/* Mark input boxes that gets an error on validation: */
+
+input.invalid {
+    background-color: #ffdddd;
+}
+
+
+/* Hide all steps by default: */
+
+.tab {
+    display: none;
+}
+
+
+/* Make circles that indicate the steps of the form: */
+
+.step {
+    height: 15px;
+    width: 15px;
+    margin: 0 2px;
+    background-color: #bbbbbb;
+    border: none;
+    border-radius: 50%;
+    display: inline-block;
+    opacity: 0.5;
+}
+
+
+/* Mark the active step: */
+
+.step.active {
+    opacity: 1;
+}
+
+
+/* Mark the steps that are finished and valid: */
+
+.step.finish {
+    background-color: #4CAF50;
+}

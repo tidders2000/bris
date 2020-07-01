@@ -2,106 +2,107 @@
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <!-- bootsrap and font Awesome CDNs -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" >
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <script src="https://kit.fontawesome.com/6cdfe06436.js" crossorigin="anonymous"></script>
     <!-- custom style sheet -->
     <link rel="stylesheet" href="{% static 'css/custom.css' %}">
     <title>{% block page_title %}{% endblock %}</title>
 </head>
+
 <body>
 
-<!-- bootstrap nav component -->
+    <!-- bootstrap nav component -->
 
-<nav class="navbar navbar-light fixed-top">
-    <a class="navbar-brand" href="{% url 'index' %}"><img src="{% static 'images/bhg_group.jpg' %}"/></a>
-    <div class='center title'>BRIS</div>
-    <div class="navbar-toggler"  data-toggle="collapse" data-target="#collapsingNavbar1">
-        <span class="navbar-toggler-icon hb"></span>
-    </div>
-    <div class="navbar-collapse collapse" id="collapsingNavbar1">
-        <ul class="nav navbar-nav">
-            <li class="nav-item dropdown">
-    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Working Hours</a>
-    <div class="dropdown-menu">
-       
-       <a class="nav-link" href="{% url 'overtime' %}">Book Overtime</a>
-       <a class="nav-link" href="{% url 'leave' %}">Book Leave</a>
-       <a class="nav-link" href="{% url 'pot' %}">Manage Pot</a>
-       
-    </div>
-  </li>
-              
-             <li class="nav-item">
-                <a class="nav-link" href="{% url 'rota_view' %}">View Rota</a>
-            </li>
-             
-         {% if perms.estab.can_add_establishment %}
-           <li class="nav-item dropdown">
-    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Management Reports</a>
-    <div class="dropdown-menu">
-       
-       <a class="nav-link" href="{% url 'estab_rep' %}">Establishment Report</a>
-       <a class="nav-link" href="{% url 'overtime_rep' %}">Overtime Report</a>
-       <a class="nav-link" href="{% url 'rota' %}">Establishment Update</a>
-        <a class="nav-link" href="{% url 'absence_rep' %}">Absence Report</a>
-    </div>
-  </li>
- 
- {% endif %}
- {% if perms.absence.change_reason %}
-  <li class="nav-item dropdown">
-    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Absence</a>
-    <div class="dropdown-menu">
-      
-       <a class="nav-link" href="{% url 'absence' %}">Absence Recording</a>
-       <a class="nav-link" href="{% url 'teamabs_rep' %}">Check Absence History</a>
-    </div>
-  </li>
- 
-     {% endif %}        
-            <li class="nav-item">
-                <a class="nav-link" href="{% url 'logout' %}">Logout</a>
-            </li>
-          
-        </ul>
-    </div>
-</nav>
+    <nav class="navbar navbar-light fixed-top">
+        <a class="navbar-brand" href="{% url 'index' %}"><img src="{% static 'images/bhg_group.jpg' %}" /></a>
+        <div class='center title'>BRIS</div>
+        <div class="navbar-toggler" data-toggle="collapse" data-target="#collapsingNavbar1">
+            <span class="navbar-toggler-icon hb"></span>
+        </div>
+        <div class="navbar-collapse collapse" id="collapsingNavbar1">
+            <ul class="nav navbar-nav">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Working Hours</a>
+                    <div class="dropdown-menu">
 
+                        <a class="nav-link" href="{% url 'overtime' %}">Book Overtime</a>
+                        <a class="nav-link" href="{% url 'leave' %}">Book Leave</a>
+                        <a class="nav-link" href="{% url 'pot' %}">Manage Pot</a>
+
+                    </div>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'rota_view' %}">View Rota</a>
+                </li>
+
+                {% if perms.estab.can_add_establishment %}
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Management Reports</a>
+                    <div class="dropdown-menu">
+
+                        <a class="nav-link" href="{% url 'estab_rep' %}">Establishment Report</a>
+                        <a class="nav-link" href="{% url 'overtime_rep' %}">Overtime Report</a>
+                        <a class="nav-link" href="{% url 'rota' %}">Establishment Update</a>
+                        <a class="nav-link" href="{% url 'absence_rep' %}">Absence Report</a>
+                    </div>
+                </li>
+
+                {% endif %} {% if perms.absence.change_reason %}
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Absence</a>
+                    <div class="dropdown-menu">
+
+                        <a class="nav-link" href="{% url 'absence' %}">Absence Recording</a>
+                        <a class="nav-link" href="{% url 'teamabs_rep' %}">Check Absence History</a>
+                    </div>
+                </li>
+
+                {% endif %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'logout' %}">Logout</a>
+                </li>
+
+            </ul>
+        </div>
+    </nav>
 
 
 
 
-<!-- sets content to fluid for all pages -->
 
-<div class="container-fluid">
+    <!-- sets content to fluid for all pages -->
+
+    <div class="container-fluid">
 
 
 
 
-<!-- django content blocks for templates -->
-    {% block content %}
-    
+        <!-- django content blocks for templates -->
+        {% block content %} {% endblock %} {% if messages %}
 
-    
-    {% endblock %}
-      {% if messages %}
-    
-<div class="message" id='alert' role="alert">
-  
-  {% for message in messages %} {{ message }} {% endfor %} {% endif%} 
- <span id='fade'>CLOSE</span>
-    </div>
-    
-<!-- Bootstrap dependancies -->
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-<!-- Custom JS -->
-<script type="text/javascript" src="{% static 'js/js.js' %}"></script>
+        <div class="message" id='alert' role="alert">
+
+            {% for message in messages %} {{ message }} {% endfor %} {% endif%}
+            <span id='fade'>CLOSE</span>
+        </div>
+
+        <!-- Bootstrap dependancies -->
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+        </script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+        </script>
+        <!-- Custom JS -->
+        <script type="text/javascript" src="{% static 'js/js.js' %}"></script>
+        <script type="text/javascript" src="{% static 'js/form.js' %}"></script>
 </body>
+
 </html>

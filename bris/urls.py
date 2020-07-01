@@ -23,6 +23,7 @@ from reports import urls as urls_reports
 from pot import urls as urls_pot
 from absence import urls as urls_absence
 from accounts import urls as urls_accounts
+from estab import urls as urls_estab
 
 
 urlpatterns = [
@@ -35,5 +36,6 @@ urlpatterns = [
     url(r'^reports/', include(urls_reports)),
     url(r'^pot/', include(urls_pot)),
     url(r'^absence/', include(urls_absence)),
-   
+    url(r'^estab/', include(urls_estab)),
+
 ]

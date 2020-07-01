@@ -1,0 +1,12 @@
+{% extends 'base.html' %} {% load bootstrap_tags %} {% block page_title %}Add Staff{% endblock %} {% block page_heading %}{% endblock %} {% block content %}
+<h2>Tuesday</h2>
+<form id="regForm" method="POST">
+    {{ form | as_bootstrap }} {% csrf_token %}
+
+    <button type='submit'>Next</button>
+</form>
+<p>
+    <a class="nav-link" class='text-dark' href="{% url 'index' %}">Skip</a>
+</p>
+
+{% endblock %}
