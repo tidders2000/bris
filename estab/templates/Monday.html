@@ -1,12 +1,17 @@
 {% extends 'base.html' %} {% load bootstrap_tags %} {% block page_title %}Add Staff{% endblock %} {% block page_heading %}{% endblock %} {% block content %}
-<h2>Monday</h2>
+
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="{% url 'index' %}">Home</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Add Staff Rota</li>
+    </ol>
+</nav>
+
+<h1>Add Staff Rota</h1>
 <form id="regForm" method="POST">
+    <h4>Monday</h4>
     {{ form | as_bootstrap }} {% csrf_token %}
 
-    <button type='submit'>Next</button>
+    <button type='submit' class="btn btn-primary ">Next</button> <a href="{% url 'tuesday' %}" class="btn btn-primary" role="button" aria-disabled="true">skip</a>
 </form>
-<p>
-    <a class="nav-link" class='text-dark' href="{% url 'index' %}">Skip</a>
-</p>
-
 {% endblock %}

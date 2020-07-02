@@ -1,60 +1,189 @@
 {% extends 'base.html' %} {% load staticfiles %} {% block page_title %}Rota view{% endblock %} {% block page_heading %}{% endblock %} {% block content %}
 
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="{% url 'index' %}">Home</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Rota</li>
+    </ol>
+</nav>
 
 <h2>Monday</h2>
 
-{% for select in selection%} {% if select.day == 'Monday' %}
-<div class="card" style="width: 18rem;">
-    <img class="card-img-top" src="{% static 'images/person.jpg' %}" alt="Card image cap">
-    <div class="card-body">
-        <h5 class="card-title">{{select.user}}</h5>
+<div class='row'>
+    {% for select in selection%} {% if select.day == 'Monday' %}
 
+
+    <div class="card d-inline-block ml-2">
+        <img class="card-img-top" src="{% static 'images/person.jpg' %}" alt="avatar " />
+        <div class=" card-body text-center ">
+            <h5 class="card-title  ">{{select.user}}</h5>
+
+        </div>
+        <ul class="list-group list-group-flush ">
+            <li class="list-group-item ">
+                <em>Start:</em> {{select.shift_start}}
+            </li>
+            <li class="list-group-item ">
+                <em>Finish:</em>{{select.shift_end}}
+            </li>
+
+        </ul>
+        <div class="card-body ">
+
+            <p>Hours: {{select.hours}}</p>
+        </div>
     </div>
-    <ul class="list-group list-group-flush">
-        <li class="list-group-item">
-            <b>Start:</b>{{select.shift_start}}
-        </li>
-        <li class="list-group-item">
-            <b>Finish:</b>{{select.shift_end}}
-        </li>
+    {% endif %} {% endfor %}
 
-    </ul>
-    <div class="card-body">
-
-        <p>Hours:{{select.hours}}</p>
-    </div>
 </div>
 
-{% endif %} {% endfor %}
 
 <h2>Tuesday</h2>
+<div class='row'>
+    {% for select in selection%} {% if select.day == 'Tuesday' %}
 
 
-{% for select in selection%} {% if select.day == 'Tuesday' %} {{select.user}} {% endif %} {% endfor %}
+    <div class="card d-inline-block ml-2">
+        <img class="card-img-top" src="{% static 'images/person.jpg' %}" alt="avatar " />
+        <div class=" card-body text-center ">
+            <h5 class="card-title  ">{{select.user}}</h5>
 
+        </div>
+        <ul class="list-group list-group-flush ">
+            <li class="list-group-item ">
+                <em>Start:</em> {{select.shift_start}}
+            </li>
+
+
+            <li class="list-group-item ">
+                <em>Finish:</em>{{select.shift_end}}
+            </li>
+
+        </ul>
+        <div class="card-body ">
+
+            <p>Hours: {{select.hours}}</p>
+        </div>
+    </div>
+    {% endif %} {% endfor %}
+
+</div>
+
+<h2>Wednesday</h2>
+<div class='row'>
+    {% for select in selection%} {% if select.day == 'Wednesday' %}
+
+
+    <div class="card d-inline-block ml-2">
+        <img class="card-img-top" src="{% static 'images/person.jpg' %}" alt="avatar " />
+        <div class=" card-body text-center ">
+            <h5 class="card-title  ">{{select.user}}</h5>
+
+        </div>
+        <ul class="list-group list-group-flush ">
+            <li class="list-group-item ">
+                <em>Start:</em> {{select.shift_start}}
+            </li>
+
+
+            <li class="list-group-item ">
+                <em>Finish:</em>{{select.shift_end}}
+            </li>
+
+        </ul>
+        <div class="card-body ">
+
+            <p>Hours: {{select.hours}}</p>
+        </div>
+    </div>
+    {% endif %} {% endfor %}
+
+</div>
+
+<h2>Thursday</h2>
+<div class='row'>
+    {% for select in selection%} {% if select.day == 'Thursday' %}
+
+
+    <div class="card d-inline-block ml-2">
+        <img class="card-img-top" src="{% static 'images/person.jpg' %}" alt="avatar " />
+        <div class=" card-body text-center ">
+            <h5 class="card-title  ">{{select.user}}</h5>
+
+        </div>
+        <ul class="list-group list-group-flush ">
+            <li class="list-group-item ">
+                <em>Start:</em> {{select.shift_start}}
+            </li>
+
+
+            <li class="list-group-item ">
+                <em>Finish:</em>{{select.shift_end}}
+            </li>
+
+        </ul>
+        <div class="card-body ">
+
+            <p>Hours: {{select.hours}}</p>
+        </div>
+    </div>
+    {% endif %} {% endfor %}
+
+</div>
+
+<h2>Friday</h2>
+<div class='row'>
+    {% for select in selection%} {% if select.day == 'Friday' %}
+
+
+    <div class="card d-inline-block ml-2">
+        <img class="card-img-top" src="{% static 'images/person.jpg' %}" alt="avatar " />
+        <div class=" card-body text-center ">
+            <h5 class="card-title  ">{{select.user}}</h5>
+
+        </div>
+        <ul class="list-group list-group-flush ">
+            <li class="list-group-item ">
+                <em>Start:</em> {{select.shift_start}}
+            </li>
+
+
+            <li class="list-group-item ">
+                <em>Finish:</em>{{select.shift_end}}
+            </li>
+
+        </ul>
+        <div class="card-body ">
+
+            <p>Hours: {{select.hours}}</p>
+        </div>
+    </div>
+    {% endif %} {% endfor %}
+
+</div>
 
 <!--
 <div class='col-sm-12 day'>
     <h1>{{day}}</h1>
 </div>
-<div class="row">
-    <div class="col-12 col-md-6 offset-md-3">
+<div class="row ">
+    <div class="col-12 col-md-6 offset-md-3 ">
 
 
-        <form method="POST" id="rota_add" enctype="multipart/form-data">
-            <div class="form-group">
-                <label for="exampleInputEmail1">Select a Date</label>
-                <input type="date" name="date" class="form-control" placeholder="yyyy-mm-dd" aria-describedby="rotaHelp" />
-                <small id="rotaHelp" class="form-text text-muted">Select a date.</small>
+        <form method="POST " id="rota_add " enctype="multipart/form-data ">
+            <div class="form-group ">
+                <label for="exampleInputEmail1 ">Select a Date</label>
+                <input type="date " name="date " class="form-control " placeholder="yyyy-mm-dd " aria-describedby="rotaHelp " />
+                <small id="rotaHelp " class="form-text text-muted ">Select a date.</small>
             </div>
 
-            <div class="form-group">
-                <label for="exampleFormControlSelect1">Select a Team</label>
+            <div class="form-group ">
+                <label for="exampleFormControlSelect1 ">Select a Team</label>
 
-                <input type="text" class="form-control" list="list2" name="team" class='input_filter' placeholder="TEAM" />
-                <datalist id="list2">
+                <input type="text " class="form-control " list="list2 " name="team " class='input_filter' placeholder="TEAM " />
+                <datalist id="list2 ">
                     {% for team in teams %}
-                    <option value="{{ team.team }}">
+                    <option value="{{ team.team }} ">
 
                         {% endfor %}
                 </datalist><br>
@@ -64,7 +193,7 @@
 
 
 
-            <button type='submit' class="btn search"><i class="fas fa-search"></i></button> {% csrf_token %}
+            <button type='submit' class="btn search "><i class="fas fa-search "></i></button> {% csrf_token %}
         </form>
 
 
@@ -74,20 +203,20 @@
     </div>
 </div>
 
-<div class="row">
-    <div class="col-6">
+<div class="row ">
+    <div class="col-6 ">
 
-        <form method="POST">
-            <input type="hidden" name="team" value="{{team}}">
-            <input type="hidden" name="date" value='{{dateymin}}'>
-            <button type='submit' class='butt_float'><i class="fas fa-caret-left"></i></button> {% csrf_token %}
+        <form method="POST ">
+            <input type="hidden " name="team " value="{{team}} ">
+            <input type="hidden " name="date " value='{{dateymin}}'>
+            <button type='submit' class='butt_float'><i class="fas fa-caret-left "></i></button> {% csrf_token %}
         </form>
     </div>
-    <div class="col-6">
-        <form method="POST" class=''>
-            <input type="hidden" name="team" value="{{team}}">
-            <input type="hidden" name="date" value='{{datemax}}'>
-            <button type='submit'><i class="fas fa-caret-right"></i></button> {% csrf_token %}
+    <div class="col-6 ">
+        <form method="POST " class=''>
+            <input type="hidden " name="team " value="{{team}} ">
+            <input type="hidden " name="date " value='{{datemax}}'>
+            <button type='submit'><i class="fas fa-caret-right "></i></button> {% csrf_token %}
         </form>
     </div>
 </div>
@@ -98,14 +227,14 @@
 
 
 
-<div class="row rota_holder">
-    <div class="col-sm-5 left_place d-none 	.d-sm-none d-md-none d-lg-block">
+<div class="row rota_holder ">
+    <div class="col-sm-5 left_place d-none .d-sm-none d-md-none d-lg-block ">
         <table class='table'>
             <thead>
                 <tr>
                     <th>
-                        <div class="float-left">08:00</div>
-                        <div class="float-right">20:00</div>
+                        <div class="float-left ">08:00</div>
+                        <div class="float-right ">20:00</div>
                     </th>
 
                 </tr>
@@ -115,11 +244,11 @@
 
 
         <br> {% for select in selection %}
-        <div class="col-md-4 rota_graph {{select.user.id}}" style="margin-left:{{select.width}}cm; ">
-            <svg width="{{select.hours}}cm " height="30">
-                <rect width="{{select.hours}}cm " height="30 " class="{{select.location}}"
-                    style="stroke-width:3;stroke:rgb(0,0,0)" data-toggle="popover"
-                    title="{{select.user.first_name}} {{select.user.last_name}}"
+        <div class="col-md-4 rota_graph {{select.user.id}} " style="margin-left:{{select.width}}cm; ">
+            <svg width="{{select.hours}}cm " height="30 ">
+                <rect width="{{select.hours}}cm " height="30 " class="{{select.location}} "
+                    style="stroke-width:3;stroke:rgb(0,0,0) " data-toggle="popover "
+                    title="{{select.user.first_name}} {{select.user.last_name}} "
                     data-content="{{select.shift_start}}-{{select.shift_end}} " />
             </svg>
 
@@ -127,30 +256,30 @@
 
         {% endfor %} {% for over in overtime %}
         <div class="col-md-4 rota_graph " style="margin-left:{{over.width}}cm; ">
-            <svg width="{{over.hours}}cm " height="30">
+            <svg width="{{over.hours}}cm " height="30 ">
                 <rect width="{{over.hours}}cm " height="30 "
-                    style="fill:rgb(255,127,80);stroke-width:3;stroke:rgb(0,0,0) " data-toggle="popover"
-                    title="{{over.user.first_name}} {{over.user.last_name}}"
+                    style="fill:rgb(255,127,80);stroke-width:3;stroke:rgb(0,0,0) " data-toggle="popover "
+                    title="{{over.user.first_name}} {{over.user.last_name}} "
                     data-content="{{over.shift_start}}-{{over.shift_end}} " />
             </svg>
 
         </div>
 
         {% endfor %} {% for p in pot %} {% if p.worked == 'pluspot' %}
-        <div class="col-md-4 rota_graph " style="margin-left:{{p.width}}cm;">
-            <svg width="{{p.hours}}cm " height="30">
+        <div class="col-md-4 rota_graph " style="margin-left:{{p.width}}cm; ">
+            <svg width="{{p.hours}}cm " height="30 ">
                 <rect width="{{p.hours}}cm " height="30 " style="fill:rgb(127,255,0);stroke-width:3;stroke:rgb(0,0,0) "
-                    data-toggle="popover" title="{{p.user.first_name}} {{p.user.last_name}}"
-                    data-content="{{p.pot_start}}-{{p.pot_end}}" />
+                    data-toggle="popover " title="{{p.user.first_name}} {{p.user.last_name}} "
+                    data-content="{{p.pot_start}}-{{p.pot_end}} " />
             </svg>
 
         </div>
         {% else %}
-        <div class="col-md-4 rota_graph " style="margin-left:{{p.width}}cm;">
-            <svg width="{{p.hours}}cm " height="30">
+        <div class="col-md-4 rota_graph " style="margin-left:{{p.width}}cm; ">
+            <svg width="{{p.hours}}cm " height="30 ">
                 <rect width="{{p.hours}}cm " height="30 " style="fill:rgb(220,20,60);stroke-width:3;stroke:rgb(0,0,0) "
-                    data-toggle="popover" title="{{p.user.first_name}} {{p.user.last_name}}"
-                    data-content="{{p.pot_start}}-{{p.pot_end}}" />
+                    data-toggle="popover " title="{{p.user.first_name}} {{p.user.last_name}} "
+                    data-content="{{p.pot_start}}-{{p.pot_end}} " />
             </svg>
 
         </div>
@@ -172,7 +301,7 @@
             </thead>
             <tbody>
                 {% for select in selection %}
-                <tr class="{{select.user.id}}">
+                <tr class="{{select.user.id}} ">
                     <td> {{select.user.first_name}} {{select.user.last_name}}</td>
                     <td>{{select.shift_start}}</td>
                     <td>{{select.shift_end}}</td>
@@ -220,7 +349,7 @@
 
 
 
-<h1>Holiday</h1><button id='togg' class='btn-outline-secondary btn-sm"'>Show/Hide</button>
+<h1>Holiday</h1><button id='togg' class='btn-outline-secondary btn-sm" '>Show/Hide</button>
 
 <table class="table table-bordered table-dark">
     <thead>
@@ -237,7 +366,7 @@
     <tbody>
 
         {% for stu in stuff %}
-        <div class='test'>{{stu.user.pk}}</div>
+        <div class='test '>{{stu.user.pk}}</div>
         <tr>
             <td>{{stu.user.pk}}</td>
             <td>{{stu.user.first_name}} {{stu.user.last_name}}</td>

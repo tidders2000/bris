@@ -19,11 +19,11 @@
 
     <!-- bootstrap nav component -->
 
-    <nav class="navbar navbar-light fixed-top">
-        <a class="navbar-brand" href="{% url 'index' %}"><img src="{% static 'images/bhg_group.jpg' %}" /></a>
-        <div class='center title'>BRIS</div>
+    <nav class="navbar navbar-dark fixed-top">
+        <a class="navbar-brand text-secondary">HR SYSTEM</a>
+
         <div class="navbar-toggler" data-toggle="collapse" data-target="#collapsingNavbar1">
-            <span class="navbar-toggler-icon hb"></span>
+            <span class="navbar-toggler-icon"></span>
         </div>
         <div class="navbar-collapse collapse" id="collapsingNavbar1">
             <ul class="nav navbar-nav">
@@ -31,9 +31,9 @@
                     <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Working Hours</a>
                     <div class="dropdown-menu">
 
-                        <a class="nav-link" href="{% url 'overtime' %}">Book Overtime</a>
+                        <!-- <a class="nav-link" href="{% url 'overtime' %}">Book Overtime</a>
                         <a class="nav-link" href="{% url 'leave' %}">Book Leave</a>
-                        <a class="nav-link" href="{% url 'pot' %}">Manage Pot</a>
+                        <a class="nav-link" href="{% url 'pot' %}">Manage Pot</a>-->
 
                     </div>
                 </li>
@@ -49,7 +49,7 @@
 
                         <a class="nav-link" href="{% url 'estab_rep' %}">Establishment Report</a>
                         <a class="nav-link" href="{% url 'overtime_rep' %}">Overtime Report</a>
-                        <a class="nav-link" href="{% url 'rota' %}">Establishment Update</a>
+                        <a class="nav-link" href="{% url 'monday' %}">Add Shifts</a>
                         <a class="nav-link" href="{% url 'absence_rep' %}">Absence Report</a>
                     </div>
                 </li>

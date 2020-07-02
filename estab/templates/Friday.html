@@ -1,9 +1,9 @@
 {% extends 'base.html' %} {% load bootstrap_tags %} {% block page_title %}Add Staff{% endblock %} {% block page_heading %}{% endblock %} {% block content %}
 
 <form id="regForm" method="POST">
-    <h4>Tuesday</h4>
+    <h4>Friday</h4>
     {{ form | as_bootstrap }} {% csrf_token %}
 
-    <button type='submit' class="btn btn-primary ">Next</button> <a href="{% url 'wednesday' %}" class="btn btn-primary" role="button" aria-disabled="true">skip</a>
+    <button type='submit' class="btn btn-primary ">Next</button>
 </form>
 {% endblock %}

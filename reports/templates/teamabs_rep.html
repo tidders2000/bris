@@ -1,58 +1,58 @@
 {% extends 'base.html' %}{% load bootstrap_tags %} {% block page_title %}Team Abs{% endblock %} {% block page_heading %}Home{% endblock %} {% block content %}
-
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="{% url 'index' %}">Home</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Check Absence</li>
+    </ol>
+</nav>
 <h1>{{ title }}</h1>
 <div class='col-sm-12 col-md-8 offset-md-2'>
-<div class="row">
-    <div class="col-sm10 offset-sm-1">
-       
+    <div class="row">
+        <div class="col-sm10 offset-sm-1">
+
+        </div>
+    </div>
+    <div class="row">
+        <form method='POST' class='form-group'>
+            <input type="text" class="form-control" list="list3" name="username" placeholder="SELECT EMP" />
+            <datalist id="list3">
+        {% for staff in staffs %}
+        <option value="{{ staff.user.id}}">{{staff.user.username}}</option>
+
+
+        {% endfor %}
+      </datalist><br> {% csrf_token %}
+            <button type='submit' class='btn btn-secondary btn-sm'>Submit</button>
+        </form>
+
+    </div>
+    <div class="row">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+
+
+                    <th scope="col">Absence Start</th>
+                    <th scope="col">Absence Finish</th>
+                    <th scope="col">Days</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                {% for staff in staffab %}
+                <tr>
+
+
+                    <td>{{staff.absence_start}}</td>
+                    <td>{{staff.absence_end}}</td>
+                    <td>{{staff.days}} </td>
+
+                </tr>
+                {% endfor %}
+
+            </tbody>
+        </table>
+
     </div>
 </div>
-<div class="row">
-    <form method='POST' class='form-group'>
-    <input type="text" class="form-control" list="list3" name="username" placeholder="SELECT EMP"/>
-          <datalist id="list3">
-         {% for staff in staffs %}
-         <option  value="{{ staff.user.id}}">{{staff.user.username}}</option>
-            
-          
-         {% endfor %}
-      </datalist><br>
-        
-        {% csrf_token %} 
-        <button type='submit' class='btn btn-secondary btn-sm'>Submit</button>
-    </form>
-       
-</div>
-<div class="row">
-    <table class="table table-hover">
-  <thead>
-    <tr>
-     
-      
-      <th scope="col">Absence Start</th>
-      <th scope="col">Absence Finish</th>
-      <th scope="col">Days</th>
-    
-    </tr>
-  </thead>
-  <tbody>
-       {% for staff in staffab %}
-    <tr>
-     
-     
-      <td>{{staff.absence_start}}</td>
-      <td>{{staff.absence_end}}</td>
-      <td>{{staff.days}} </td>
-      
-    </tr>
-    {% endfor %}
-    
-  </tbody>
-</table>
-
-</div>
-</div>
 {% endblock %}
-
-   
-    
