@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 """
 
 import os
-import env
+#import env
 import dj_database_url
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -133,7 +133,7 @@ AUTHENTICATION_BACKENDS = [
 
 LANGUAGE_CODE = 'en'
 DATETIME_FORMAT = '%d/%m/%Y'
-DATE_INPUT_FORMATS = ['%d/%m/%Y']
+DATE_INPUT_FORMATS = ['%d/%m/£%Y']
 
 TIME_ZONE = 'GMT'
 
