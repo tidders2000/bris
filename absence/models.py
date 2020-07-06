@@ -21,3 +21,7 @@ class Absence(models.Model):
     further_support = models.TextField(null=True, blank=True)
     days = models.CharField(max_length=254, default=0)
     reason = models.ForeignKey(Reason, on_delete=models.SET_NULL, null=True)
+
+
+def __str__(self):
+    return self.user

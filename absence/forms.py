@@ -15,5 +15,7 @@ class absence_form(forms.ModelForm):
     )
     absence_end = forms.DateField(
         widget=forms.DateInput(format='%d/%m/%Y'),
-        input_formats=('%d/%m/%Y', )
+        input_formats=('%d/%m/%Y '),
+        required=False
+
     )
