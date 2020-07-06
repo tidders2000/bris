@@ -131,8 +131,9 @@ AUTHENTICATION_BACKENDS = [
 # Internationalization
 # https://docs.djangoproject.com/en/1.11/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'en'
 DATETIME_FORMAT = '%d-%m-%Y'
+DATE_INPUT_FORMATS = ['%d-%m-%Y']
 
 TIME_ZONE = 'GMT'
 
