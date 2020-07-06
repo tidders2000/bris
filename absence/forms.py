@@ -10,6 +10,10 @@ class absence_form(forms.ModelForm):
                   'days', 'gp_consult', 'further_support')
 
     absence_start = forms.DateField(
-        widget=forms.DateInput(format='%m/%d/%Y'),
-        input_formats=('%m/%d/%Y', )
+        widget=forms.DateInput(format='%d/%m/%Y'),
+        input_formats=('%d/%m/%Y', )
+    )
+    absence_end = forms.DateField(
+        widget=forms.DateInput(format='%d/%m/%Y'),
+        input_formats=('%d/%m/%Y', )
     )
