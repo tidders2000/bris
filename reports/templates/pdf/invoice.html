@@ -1,7 +1,7 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
     <head>
-        <title>OT Report</title>
+        <title>Absence Report</title>
         <style type="text/css">
             body {
                 font-weight: 200;
@@ -39,7 +39,7 @@
     <body>
         <div class='wrapper'>
             <div class='header'>
-                <p class='title'>Overtime </p>
+                <p class='title'>Absence </p>
             </div>
         <div>
        
@@ -49,25 +49,22 @@
     <tr>
      
       <th scope="col">Name</th>
-      <th scope="col">Team</th>
-      <th scope="col">Date</th>
-      <th scope="col">Shift</th>
-      <th scope="col">Hours</th>
-      <th scope="col">Authorised</th>
-      <th scope="col">Approver</th>
+      <th scope="col">Start</th>
+      <th scope="col">End</th>
+      <th scope="col">Days</th>
+    
     </tr>
   </thead>
   <tbody>
-       {% for over in overtime %}
+
+       {% for ab in absence %}
     <tr>
      
-      <td>{{over.user.first_name}} {{over.user.last_name}} </td>
-      <td>{{over.team}}</td>
-      <td>{{over.Date}}</td>
-      <td>{{over.shift_start}} - {{over.shift_end}}</td>
-      <td>{{over.hours}}</td>
-      <td>{{over.approved}}</td>
-      <td>{{over.appmanagerun}}</td>
+      <td>{{ab.user.first_name}} {{ab.user.last_name}} </td>
+      <td>{{ab.absence_start}}</td>
+      <td>{{ab.absence_end}}</td>
+      <td>{{ab.days}}</td>
+      
     </tr>
     {% endfor %}
   </tbody>

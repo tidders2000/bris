@@ -144,18 +144,17 @@ def estab_rep(request):
     return render(request, 'estab_rep.html', {'monthly': monthly})
 
 
-"""Aloows report to be printed to pdf"""
+"""Allows report to be printed to pdf"""
 
 
 def pdf(request):
-    overtime = Overtime.objects.filter(
-        Date__gte='2019-11-01', Date__lte='2019-11-30')
-    data = {
-        'today': datetime.date.today(),
-        'amount': 39.99,
-        'customer_name': 'Cooper Mann',
-        'order_id': 1233434,
-        'overtime': overtime
-    }
+    absence = Absence.objects.filter(
+        absence_start__gte='2020-07-01').values()
+
+    print(absence.values()[0])
+
+    data = absence.values()[0]
+
     pdf = render_to_pdf('pdf/invoice.html', data)
+
     return HttpResponse(pdf, content_type='application/pdf')

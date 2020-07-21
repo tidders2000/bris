@@ -133,11 +133,12 @@ AUTHENTICATION_BACKENDS = [
 
 LANGUAGE_CODE = 'en'
 DATETIME_FORMAT = '%d/%m/%Y'
-DATE_INPUT_FORMATS = ['%d/%m/£%Y']
+DATETIME_INPUT_FORMATS = ['%d/%m/%Y']
 
-TIME_ZONE = 'GMT'
+USE_TZ = True
 
-USE_I18N = True
+
+USE_I18N = False
 
 USE_L10N = True
 
