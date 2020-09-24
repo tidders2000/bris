@@ -40,7 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'accounts',
-    "bootstrap4",
+
     'django_forms_bootstrap',
     'estab',
     'rota',
@@ -51,7 +51,7 @@ INSTALLED_APPS = [
     'absence',
     'whitenoise',
 
-    'bootstrap_datepicker_plus'
+
 
 ]
 
