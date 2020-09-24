@@ -38,7 +38,9 @@
     </div>-->
 
     <!-- absence forms for currect sick staff hidden for staff-->
+{% if perms.estab.can_add_establishment %}
     <div class="row">
+    
         <div class="text-center col-md-4 offset-md-1 p-5 bg-dark">
             <a href="{% url 'absence' %}"> <i class="fa fa-user-plus fa-5x roll-over" aria-hidden="true"></i></a><br>
             <h4 class='text-white'>Add Absence</h4>
@@ -48,17 +50,22 @@
             <a href="{% url 'teamabs_rep' %}"> <i class="fa fa-history fa-5x roll-over" aria-hidden=" true "></i></a><br>
             <h4 class='text-white'>Check History</h4>
         </div>
+
+        
+    </div>
+{% endif %}
+    <div class='row mt-3'>
+    
+       <div class="text-center col-md-4 offset-md-1 p-5 bg-dark">
+            <a href="{% url 'overtime' %}"> <i class="fa fa-money fa-5x roll-over" aria-hidden="true"></i></a><br>
+            <h4 class='text-white'>Add Overtme</h4>
+        </div>
     </div>
     {% if perms.absence.change_reason %}
+  
     <div class=" row ">
-
-
-        <h2 class='mt-4'>Absent Staff</h2>
-
-    </div>
-    <div class=" row ">
-
-
+         <div class=" col-sm-10 offset-sm-1 approvals ">
+   <h2 class='mt-4'>Absent Staff</h2>
 
         {% for a in absence %} {% if user.profile.team == a.user.profile.team %}
         <div class=" card col-md-2 " style="width: 18rem; ">
@@ -69,7 +76,7 @@
                 <a class=" btn btn-default " href="/absence/edit/{{a.id}}/ "><span class='abs_butt'>Complete
                         RTW</span></a>
             </div>
-
+            </div>
         </div>
 
 
@@ -81,6 +88,78 @@
     </div>
 </div>
 {% endif %}
+ <!-- logged in user overtime -->
+
+    <div class=" row mt-2 ">
+
+        <div class=" col-sm-10 offset-sm-1 approvals ">
+          <h2>My Overtime</h2>
+            <table class=" table table-bordered table-hover ">
+                <thead>
+
+                    <tr>
+
+
+                        <th scope=" col ">Date</th>
+                        <th scope=" col ">Hours</th>
+                        <th scope=" col ">Status</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+
+                    {% for over in myot %}
+
+                    <tr>
+                        <td> {{over.Date}}</td>
+                        <td> {{over.hours}}</td>
+                        <td> {{over.status}}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    {% if perms.absence.change_reason %}
+    <div class=" row ">
+     
+        <div class=" col-sm-10 offset-sm-1 approvals ">
+            <h2>Overtime requests</h2>
+            <table class=" table table-bordered table-hover rota_tab ">
+                <thead class=" ">
+                    <tr>
+
+                        <th scope=" col ">Name</th>
+                        <th scope=" col ">Times</th>
+                        <th scope=" col ">Date</th>
+                        <th scope=" col ">Location</th>
+                        <th scope=" col ">Approve</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+{{ot.approve}}
+                    {% for ot in otapprove %}
+                    <tr>
+                        <td> {{ot.user.first_name}} {{over.user.last_name}}</td>
+
+                        <td>{{ot.shift_start}}-{{ot.shift_end}}</td>
+                        <td>{{ot.Date}}</td>
+                        <td>{{ot.location}}</td>
+                        <td>
+                            <form method='POST'>
+                                <div class=" form-group form-check ">
+
+                                    <input type="hidden" name="ot_pk" value="{{ot.pk}}"/> {% csrf_token %} {{ status | as_bootstrap }}
+
+                                </div><button type="submit" name='otbutt' class=" btn btn-outline-secondary ">Approve</button></form>
+                        </td>
+                        {% endfor %}
+                    </tr>
+                </tbody>
+            </table>
+
+            {% endif %}
 
 <!-- logged in user hours 
     <div class=" row ">

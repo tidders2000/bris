@@ -2,6 +2,10 @@ from django import forms
 from .models import Absence
 
 
+class DateInput(forms.DateInput):
+    input_type = 'date'
+
+
 class absence_form(forms.ModelForm):
 
     class Meta:
@@ -9,13 +13,6 @@ class absence_form(forms.ModelForm):
         fields = ('user', 'absence_start', 'absence_end', 'reason',
                   'days', 'gp_consult', 'further_support')
 
-    absence_start = forms.DateField(
-        widget=forms.DateInput(format='%d/%m/%Y'),
-        input_formats=('%d/%m/%Y', )
-    )
-    absence_end = forms.DateField(
-        widget=forms.DateInput(format='%d/%m/%Y'),
-        input_formats=('%d/%m/%Y',),
-        required=False
-
-    )
+        widgets = {
+            'absence_start': DateInput(), 'absence_end': DateInput()
+        }

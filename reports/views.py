@@ -151,9 +151,7 @@ def pdf(request):
     absence = Absence.objects.filter(
         absence_start__gte='2020-07-01').values()
 
-    print(absence.values()[0])
-
-    data = absence.values()[0]
+    data = {'name': 'hello'}
 
     pdf = render_to_pdf('pdf/invoice.html', data)
 
