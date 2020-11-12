@@ -58,12 +58,12 @@ def rota(request):
 
 @login_required
 def rota_view(request):
-    u = User.objects.get(pk=10)
-
+    current_user = request.user.pk
+    teaml = request.user.profile.team
     selection = []
     data = Shifts.objects.order_by('day')
 
     for dat in data:
-        if dat.user.profile.team == 'admin':
+        if dat.user.profile.team == teaml:
             selection.append(dat)
     return render(request, 'rota_view.html', {'selection': selection})
