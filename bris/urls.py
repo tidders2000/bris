@@ -24,6 +24,8 @@ from pot import urls as urls_pot
 from absence import urls as urls_absence
 from accounts import urls as urls_accounts
 from estab import urls as urls_estab
+from on_board import urls as urls_onboard
+from employee_details import urls as urls_employee
 
 
 urlpatterns = [
@@ -37,5 +39,7 @@ urlpatterns = [
     url(r'^pot/', include(urls_pot)),
     url(r'^absence/', include(urls_absence)),
     url(r'^estab/', include(urls_estab)),
+    url(r'^onboard/', include(urls_onboard)),
+    url(r'^employee/', include(urls_employee)),
 
 ]

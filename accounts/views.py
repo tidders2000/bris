@@ -8,10 +8,12 @@ from estab.models import Establishment
 from leave.models import Leave
 from django.db.models import Sum
 from absence.models import Absence
-from pot.models import Pot
+
 from overtime.forms import status_form
 from leave.forms import status_form_leave
-from pot.forms import status_form_pot
+
+from .forms import profile_form
+from .models import Profile
 
 """ displays dashboard page """
 
@@ -22,7 +24,7 @@ def index(request):
     current_user = request.user.pk
 
     teaml = request.user.profile.team
-   
+
     """approval requests"""
     otapprove = Overtime.objects.filter(
         appmanager=current_user).filter(status='Unactioned')
@@ -42,14 +44,12 @@ def index(request):
         status='Declined').aggregate(Sum('hours')).get('hours__sum', 0.00)
     team_leave = Leave.objects.filter(team=teaml).exclude(
         status='Declined').order_by('date_start')
-    pot = request.user.profile.pot
-    potapprove = Pot.objects.filter(
-        appmanager=current_user).filter(status='Unactioned')
+
     """ manages the approval form for leave"""
 
     status = status_form()
     lestat = status_form_leave()
-    potform = status_form_pot()
+
     """manages approval process for leave types"""
     if request.method == "POST":
         if 'otbutt' in request.POST:
@@ -68,16 +68,9 @@ def index(request):
             t.status = nv
             t.save()
 
-        elif 'potbutt' in request.POST:
-            ot = status_form_pot(request.POST)
-            nv = ot['status'].value()
-            ot_pk = request.POST.get('po_pk')
-            t = Pot.objects.get(id=ot_pk)
-            t.status = nv
-            t.save()
-        return render(request, 'index.html', {'potapprove': potapprove, 'potform': potform, 'lestat': lestat, 'status': status, 'myot': myot, 'otapprove': otapprove, 'alapprove': alapprove, 'myhours': myhours, 'myleave': myleave, 'myottotal': myottotal, ' team_leave': team_leave})
+        return render(request, 'index.html', {'lestat': lestat, 'status': status, 'myot': myot, 'otapprove': otapprove, 'alapprove': alapprove, 'myhours': myhours, 'myleave': myleave, 'myottotal': myottotal, ' team_leave': team_leave})
     else:
-        return render(request, 'index.html', {'potapprove': potapprove, 'potform': potform, 'lestat': lestat, 'status': status, 'absence': absence, 'myot': myot, 'otapprove': otapprove, 'alapprove': alapprove, 'myhours': myhours, 'myleave': myleave, 'myottotal': myottotal, 'team_leave': team_leave, 'hours_total': hours_total, 'pot': pot})
+        return render(request, 'index.html', {'lestat': lestat, 'status': status, 'absence': absence, 'myot': myot, 'otapprove': otapprove, 'alapprove': alapprove, 'myhours': myhours, 'myleave': myleave, 'myottotal': myottotal, 'team_leave': team_leave, 'hours_total': hours_total})
 
 
 @login_required
@@ -135,5 +128,15 @@ def registration(request):
 
 def user_profile(request):
     """the users profile page"""
-    user = User.objects.get(email=request.user.email)
-    return render(request, 'profile.html', {'profile': user})
+
+    instance = Profile.objects.get(pk=request.user.pk)
+    if request.method == "POST":
+
+        form = profile_form(request.POST, request.FILES, instance=instance)
+        if form.is_valid():
+            form.save(commit=True)
+
+        messages.error(request, "Profile Updated")
+
+    profile = profile_form(instance=instance)
+    return render(request, 'profile.html', {'profile': profile, 'instance': instance})

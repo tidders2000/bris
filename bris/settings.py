@@ -40,7 +40,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'accounts',
-
     'django_forms_bootstrap',
     'estab',
     'rota',
@@ -50,6 +49,8 @@ INSTALLED_APPS = [
     'pot',
     'absence',
     'whitenoise',
+    'employee_details',
+    'on_board',
 
 
 
