@@ -1,7 +1,7 @@
 from django.shortcuts import render, HttpResponse
 from django.views.generic import View
 from overtime.models import Overtime
-from estab.models import Establishment
+from estab.models import Shifts
 from absence.models import Absence
 import calendar
 from django.db.models import Sum
@@ -55,7 +55,7 @@ def absence_rep(request):
 
             new = round(now)
 
-            dw = Establishment.objects.filter(user=user).count()
+            dw = Shifts.objects.filter(user=user).count()
             shifts_m = round(new/7*dw)
             t = Absence.objects.get(id=abse.id)
             t.days = shifts_m
